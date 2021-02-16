@@ -7,14 +7,15 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Android 音视频开发学习笔记 - 音视频基础知识 - 开发技术笔记</title>
+  <title>Kotlin 表达式 - 开发技术笔记</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
 
   
   
-  <meta name="description" content="Android 音视频开发学习笔记 - 音视频基础知识..."> 
+  <meta name="description" content="Kotlin 表达式常量和变量
+val and var..."> 
   
   <meta name="author" content="Mlya"> 
 
@@ -133,7 +134,7 @@
       <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
     
   </div>
-  <div class="center">Android 音视频开发学习笔记 - 音视频基础知识</div>
+  <div class="center">Kotlin 表达式</div>
   <div class="right">
     <i class="iconfont iconmenu j-navbar-menu"></i>
   </div>
@@ -188,59 +189,47 @@
     <article class="article">
   <div class="wrap">
     <section class="head">
-  <img src="http://cdn.mlya.xyz/mweb/16130089570337.jpg" draggable="false">
+  <img src="http://cdn.mlya.xyz/mweb/16134815379546.jpg" draggable="false">
   <div class="head-mask">
-    <h1 class="head-title">Android 音视频开发学习笔记 - 音视频基础知识</h1>
+    <h1 class="head-title">Kotlin 表达式</h1>
     <div class="head-info">
-      <span class="post-info-item"><i class="iconfont iconcalendar"></i>February 11, 2021</span
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>February 16, 2021</span
         class="post-info-item">
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>590</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1416</span>
     </div>
   </div>
 </section>
     <section class="main">
       <section class="content">
-        <h1 id="Android-音视频开发学习笔记-音视频基础知识"><a href="#Android-音视频开发学习笔记-音视频基础知识" class="headerlink" title="Android 音视频开发学习笔记 - 音视频基础知识"></a>Android 音视频开发学习笔记 - 音视频基础知识</h1><h2 id="音视频基础知识"><a href="#音视频基础知识" class="headerlink" title="音视频基础知识"></a>音视频基础知识</h2><h3 id="帧率（Frame-Rate）"><a href="#帧率（Frame-Rate）" class="headerlink" title="帧率（Frame Rate）"></a>帧率（Frame Rate）</h3><p>帧率：每秒显示帧数（frames per second, fps）</p>
-<h3 id="分辨率"><a href="#分辨率" class="headerlink" title="分辨率"></a>分辨率</h3><p>视频分辨率，图像大小或尺寸</p>
-<h3 id="刷新率"><a href="#刷新率" class="headerlink" title="刷新率"></a>刷新率</h3><p>图片每秒刷新的次数，包括垂直刷新率和水平刷新率，一般指的是垂直刷新率。</p>
-<h3 id="编码格式"><a href="#编码格式" class="headerlink" title="编码格式"></a>编码格式</h3><p>常用的视频编码格式：</p>
-<ul>
-<li>MPEG</li>
-<li>H.26X</li>
+        <h1 id="Kotlin-表达式"><a href="#Kotlin-表达式" class="headerlink" title="Kotlin 表达式"></a>Kotlin 表达式</h1><h2 id="常量和变量"><a href="#常量和变量" class="headerlink" title="常量和变量"></a>常量和变量</h2><ul>
+<li><code>val</code> and <code>var</code></li>
+<li><code>val</code> 只读变量，并不一定每次读到的都是一样的，如果覆写了 <code>get</code> 方法，那么可能每次读到的变量不同</li>
+<li>常量：<code>const val</code>，智能定义在全局范围，智能修饰基本类型，必须立即用字面量初始化，等同于 Java 中的 <code>static final</code></li>
+<li>编译期常量和运行时常量</li>
 </ul>
-<h3 id="封装格式"><a href="#封装格式" class="headerlink" title="封装格式"></a>封装格式</h3><p>mkv, avi, ts 等</p>
-<h3 id="码率"><a href="#码率" class="headerlink" title="码率"></a>码率</h3><p>码率就是比特率，单位时间媒体的比特率，比特率越高，需要的带宽越高。</p>
-<p>$$<br>文件大小 = 码率 \times 时常<br>$$</p>
-<h3 id="DTS-和-PTS"><a href="#DTS-和-PTS" class="headerlink" title="DTS 和 PTS"></a>DTS 和 PTS</h3><ul>
-<li>DTS: Decode time stamp, 用于标示读入内存的比特流在什么时候开始送入解码器进行解码。</li>
-<li>PTS：presentation time stamp, 用于度量解码后的视频帧在什么时候被显示出来。</li>
+<h2 id="分支表达式"><a href="#分支表达式" class="headerlink" title="分支表达式"></a>分支表达式</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-comment">// if else 表达式</span><br>c = <span class="hljs-keyword">if</span> (a == <span class="hljs-number">3</span>) <span class="hljs-number">4</span> <span class="hljs-keyword">else</span> <span class="hljs-number">5</span><br><br><span class="hljs-comment">// when 表达式</span><br><span class="hljs-keyword">var</span> x: Any = ...<br>c = <span class="hljs-keyword">when</span> &#123;<br>    x <span class="hljs-keyword">is</span> String -&gt; x.length<br>    x == <span class="hljs-number">1</span> -&gt; <span class="hljs-number">100</span><br>    <span class="hljs-keyword">else</span> -&gt; <span class="hljs-number">10</span><br>&#125;<br><br><span class="hljs-comment">// try catch 表达式</span><br>c = <span class="hljs-keyword">try</span> &#123;<br>    a / b<br>&#125; <span class="hljs-keyword">catch</span> (e: Exception) &#123;<br>    e.printStackTrae()<br>    <span class="hljs-number">0</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="运算符和中缀表达式"><a href="#运算符和中缀表达式" class="headerlink" title="运算符和中缀表达式"></a>运算符和中缀表达式</h2><ul>
+<li>Kotlin 支持运算符重载</li>
 </ul>
-<h3 id="YUV-和-RGB"><a href="#YUV-和-RGB" class="headerlink" title="YUV 和 RGB"></a>YUV 和 RGB</h3><ul>
-<li>YUV: 亮度、色差</li>
-<li>RGB: 红、绿、蓝</li>
+<h3 id="与-equals"><a href="#与-equals" class="headerlink" title="== 与 equals"></a>== 与 equals</h3><ul>
+<li><code>&quot;Hello&quot; == &quot;World&quot;</code> 等价于 <code>&quot;Hello&quot;.equals(&quot;World&quot;)</code></li>
 </ul>
-<h3 id="视频帧和音频帧"><a href="#视频帧和音频帧" class="headerlink" title="视频帧和音频帧"></a>视频帧和音频帧</h3><ul>
-<li>I: 关键帧，一幅画面的完整保留。</li>
-<li>P: 差别帧，解码需要之前缓存的画面和 P 帧。</li>
-<li>B: 双向差别帧，解码需要本帧与前后帧的差别。</li>
-</ul>
-<p>音频：</p>
-<ul>
-<li>PCM: </li>
-<li>AMR</li>
-<li>MP3</li>
-</ul>
-<h3 id="量化精度"><a href="#量化精度" class="headerlink" title="量化精度"></a>量化精度</h3><p>每个采样，用几个 bit 的数据去保存</p>
-<h3 id="采样率"><a href="#采样率" class="headerlink" title="采样率"></a>采样率</h3><p>每秒的采样点个数</p>
-<h3 id="声道"><a href="#声道" class="headerlink" title="声道"></a>声道</h3><ul>
-<li>单声道</li>
-<li>立体声：2 个声道</li>
-<li>4 声道</li>
-<li>4.1 声道，4 + 低音声道</li>
-<li>5.1 声道，左环绕 + 右环绕</li>
-<li>7.1 声道</li>
-</ul>
+<h3 id="中缀表达式"><a href="#中缀表达式" class="headerlink" title="中缀表达式"></a>中缀表达式</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-number">2</span> to <span class="hljs-number">3</span><br><span class="hljs-comment">// 等价于</span><br><span class="hljs-number">2</span>.to(<span class="hljs-number">3</span>)<br><br><span class="hljs-comment">// infix 关键字 + 只有一个参数</span><br><span class="hljs-keyword">infix</span> <span class="hljs-function"><span class="hljs-keyword">fun</span><span class="hljs-type">&lt;A, B&gt;</span> A.<span class="hljs-title">to</span><span class="hljs-params">(that: <span class="hljs-type">B</span>)</span></span>: Pair&lt;A, B&gt; = Pair(<span class="hljs-keyword">this</span>, that)<br></code></pre></td></tr></table></figure>
+
+<h3 id="Lambda-表达式"><a href="#Lambda-表达式" class="headerlink" title="Lambda 表达式"></a>Lambda 表达式</h3><p>一个普通函数：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">func</span><span class="hljs-params">()</span></span> &#123;<br>    println(<span class="hljs-string">&quot;Hello&quot;</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>一个匿名函数，可以将函数传递给一个变量：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-comment">// 这个函数的类型为 () -&gt; Unit</span><br><span class="hljs-keyword">val</span> func: () -&gt; <span class="hljs-built_in">Unit</span> = <span class="hljs-function"><span class="hljs-title">fun</span><span class="hljs-params">()</span></span> &#123;<br>    println(<span class="hljs-string">&quot;Hello&quot;</span>)<br>&#125;<br><br><span class="hljs-comment">// 在调用的时候，可以像调用函数一样</span><br>func()<br></code></pre></td></tr></table></figure>
+
+<p>Lambda 表达式：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">val</span> lambda: () -&gt; <span class="hljs-built_in">Unit</span> = &#123;<br>    println(<span class="hljs-string">&quot;Hello&quot;</span>)<br>&#125;<br><br><span class="hljs-keyword">val</span> f1: (<span class="hljs-built_in">Int</span>) -&gt; <span class="hljs-built_in">Unit</span> = &#123; p: <span class="hljs-built_in">Int</span> -&gt;<br>    println(p)<br>&#125;<br><br><span class="hljs-keyword">val</span> f1: Function1&lt;<span class="hljs-built_in">Int</span>, <span class="hljs-built_in">Unit</span>&gt; = &#123; p -&gt;<br>    println(p)<br>&#125;<br><br><span class="hljs-keyword">val</span> f1 = &#123; p: <span class="hljs-built_in">Int</span> -&gt;<br>    println(p)<br>&#125;<br><br><span class="hljs-comment">// 表达式最后一行作为返回值</span><br><span class="hljs-keyword">val</span> f1 = &#123; p: <span class="hljs-built_in">Int</span> -&gt;<br>    println(p)<br>    <span class="hljs-string">&quot;Hello&quot;</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>当 Lambda 只有一个参数，可以用 it 指代</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">val</span> f1: Function1&lt;<span class="hljs-built_in">Int</span>, <span class="hljs-built_in">Unit</span>&gt; = &#123;<br>    println(it)<br>&#125;<br></code></pre></td></tr></table></figure>
+
 
       </section>
       <section class="extra">
@@ -248,7 +237,7 @@
         <ul class="copyright">
   
   <li><strong>本文作者：</strong>Mlya</li>
-  <li><strong>本文链接：</strong><a href="https://blog.mlya.xyz/2021/02/11/Android-%E9%9F%B3%E8%A7%86%E9%A2%91%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E9%9F%B3%E8%A7%86%E9%A2%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.html">https://blog.mlya.xyz/2021/02/11/Android-%E9%9F%B3%E8%A7%86%E9%A2%91%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E9%9F%B3%E8%A7%86%E9%A2%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.html</a></li>
+  <li><strong>本文链接：</strong><a href="https://blog.mlya.xyz/2021/02/16/Kotlin-%E8%A1%A8%E8%BE%BE%E5%BC%8F/index.html">https://blog.mlya.xyz/2021/02/16/Kotlin-%E8%A1%A8%E8%BE%BE%E5%BC%8F/index.html</a></li>
   <li><strong>版权声明：</strong>本博客所有文章均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
       rel="external nofollow" target="_blank"> BY-NC-SA </a>许可协议，转载请注明出处！</li>
   
@@ -266,15 +255,13 @@
 </section>
         
         
-  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9F%B3%E8%A7%86%E9%A2%91/" rel="tag">音视频</a></li></ul>
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a></li></ul>
 
         
 <nav class="nav">
   
-    <a href="/2021/02/16/Kotlin-%E5%86%85%E7%BD%AE%E7%B1%BB%E5%9E%8B/"><i class="iconfont iconleft"></i>Kotlin 内置类型</a>
   
-  
-    <a href="/2020/11/02/java-lang-Integer-parseInt-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">java.lang.Integer#parseInt() 源码分析<i class="iconfont iconright"></i></a>
+    <a href="/2021/02/16/Kotlin-%E5%86%85%E7%BD%AE%E7%B1%BB%E5%9E%8B/">Kotlin 内置类型<i class="iconfont iconright"></i></a>
   
 </nav>
 

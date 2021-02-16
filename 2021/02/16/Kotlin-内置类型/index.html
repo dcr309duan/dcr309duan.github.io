@@ -1,0 +1,481 @@
+
+
+<!DOCTYPE html>
+<html lang="en" color-mode=light>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Kotlin 内置类型 - 开发技术笔记</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+
+  
+  
+  <meta name="description" content="Kotlin 内置类型kotlin vs java
+k..."> 
+  
+  <meta name="author" content="Mlya"> 
+
+  
+    <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  
+  
+    <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  
+  
+    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  
+  
+    <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_s6x2xcokxrl.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+  
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      lazyload: {
+        enable: false,
+        only_post: 'false',
+        loading: '/images/theme/loading.gif'
+      },
+      donate: {
+        enable: true,
+        alipay: 'http://cdn.mlya.xyz/WechatIMG965.jpeg',
+        wechat: 'http://cdn.mlya.xyz/WechatIMG964.jpeg'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: true
+      },
+      preview: {
+        background: {
+          default: '/images/theme/welcome-image.jpg',
+          api: ''
+        },
+        motto: {
+          default: '我在开了灯的床头下，想问问自己的心啊。',
+          api: 'https://v1.hitokoto.cn/?encode=text&c=d'
+        },
+      },
+      qrcode: {
+        enable: true,
+        type: 'url',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+      }
+    }
+  </script>
+
+  
+
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body class="lock-screen">
+  <div class="loading"></div>
+  
+
+
+<nav class="navbar">
+  <div class="left">
+    
+      <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+    
+    
+      <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+    
+  </div>
+  <div class="center">Kotlin 内置类型</div>
+  <div class="right">
+    <i class="iconfont iconmenu j-navbar-menu"></i>
+  </div>
+  
+    <div class="qrcode"></div>
+  
+</nav>
+
+  <nav class="menu">
+  <div class="menu-wrap">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content">
+      
+      
+      
+      
+      <li class="menu-item"><a href="/ " class="underline"> 首页</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/galleries " class="underline"> 摄影</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/archives " class="underline"> 归档</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/tags " class="underline"> 标签</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/categories " class="underline"> 分类</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/about " class="underline"> 关于</a></li>
+      
+    </ul>
+    <div class="menu-copyright"><div><a href="http://www.beian.miit.gov.cn/" rel="external nofollow" target="_blank">京ICP备20017514号</a><div style="width:300px;margin:0 auto; padding:20px 0;"><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802031832" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><p style="float:left;height:20px;line-height:20px;margin:0px 0px 0px 5px; color:#939393;">京公网安备 11010802031832号</p></a></div></div></div>
+  </div>
+</nav>
+  <main id="main">
+  <div class="container" id="container">
+    <article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img src="http://cdn.mlya.xyz/mweb/16134812802184.jpg" draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">Kotlin 内置类型</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>February 16, 2021</span
+        class="post-info-item">
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>2346</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        <h1 id="Kotlin-内置类型"><a href="#Kotlin-内置类型" class="headerlink" title="Kotlin 内置类型"></a>Kotlin 内置类型</h1><h2 id="kotlin-vs-java"><a href="#kotlin-vs-java" class="headerlink" title="kotlin vs java"></a>kotlin vs java</h2><ul>
+<li>kotlin 没有像 Java 一样的基本类型</li>
+<li>变量声明：val, var</li>
+<li>类型推导</li>
+<li>long: <code>L</code> not <code>l</code></li>
+<li>隐式类型转换：<code>e.toLong()</code></li>
+<li>无符号类型：<code>UInt</code></li>
+<li><code>===</code> 比较引用，<code>==</code> 比较值</li>
+</ul>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>基本类型的数组，Kotlin 有专门的类型</p>
+<ul>
+<li><code>int[]</code> -&gt; <code>IntArray</code></li>
+<li><code>Integer[]</code> -&gt; <code>Array&lt;Int&gt;</code></li>
+</ul>
+<p>数组的创建：</p>
+<ul>
+<li><code>intArrayOf()</code></li>
+<li><code>arrayOf()</code></li>
+<li><code>IntArray(5)&#123;it + 1&#125;</code> -&gt; <code>[1, 2, 3, 4, 5]</code></li>
+<li><code>in</code></li>
+</ul>
+<p>数组遍历：</p>
+<ul>
+<li><code>array.indices</code></li>
+</ul>
+<h2 id="区间"><a href="#区间" class="headerlink" title="区间"></a>区间</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-comment">// 闭区间</span><br><span class="hljs-keyword">val</span> intRange = <span class="hljs-number">1</span> .. <span class="hljs-number">10</span> <span class="hljs-comment">// [1, 10]</span><br><span class="hljs-keyword">val</span> charRange = <span class="hljs-string">&#x27;a&#x27;</span> .. <span class="hljs-string">&#x27;z&#x27;</span><br><span class="hljs-keyword">val</span> longRange = <span class="hljs-number">1L</span> .. <span class="hljs-number">100L</span><br><br><span class="hljs-comment">// 开区间</span><br><span class="hljs-keyword">val</span> intRange = <span class="hljs-number">1</span> until <span class="hljs-number">10</span> <span class="hljs-comment">// [1, 10)</span><br><span class="hljs-keyword">val</span> charRange = <span class="hljs-string">&#x27;a&#x27;</span> until <span class="hljs-string">&#x27;z&#x27;</span><br><span class="hljs-keyword">val</span> longRange = <span class="hljs-number">1L</span> until <span class="hljs-number">100L</span><br><br><span class="hljs-comment">// 倒序区间</span><br><span class="hljs-keyword">val</span> intRangeReverse = <span class="hljs-number">10</span> downTo <span class="hljs-number">1</span> <span class="hljs-comment">// [10, 9,..., 1]</span><br><span class="hljs-keyword">val</span> charRangeReverse = <span class="hljs-string">&#x27;z&#x27;</span> downTo <span class="hljs-string">&#x27;a&#x27;</span><br><span class="hljs-keyword">val</span> longRangeReverse = <span class="hljs-number">100L</span> downTo <span class="hljs-number">1L</span><br><br><span class="hljs-comment">// 步长</span><br><span class="hljs-keyword">val</span> intRange = <span class="hljs-number">1</span> .. <span class="hljs-number">10</span> step <span class="hljs-number">2</span><br><span class="hljs-keyword">val</span> charRange = <span class="hljs-string">&#x27;a&#x27;</span> .. <span class="hljs-string">&#x27;z&#x27;</span> step <span class="hljs-number">2</span><br><span class="hljs-keyword">val</span> longRange = <span class="hljs-number">1L</span> .. <span class="hljs-number">100L</span> step <span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="Kotlin-集合框架"><a href="#Kotlin-集合框架" class="headerlink" title="Kotlin 集合框架"></a>Kotlin 集合框架</h2><ul>
+<li>增加了不可变集合框架的接口</li>
+<li>复用 Java API 的所有实现类型</li>
+<li>提供了丰富易用的方法，例如 forEach/map/flatMap</li>
+<li>运算符级别的支持，简化集合框架的访问</li>
+</ul>
+<p>kotlin 通过类型别名的方式，将集合类型映射到了 Java 类。这样做的目的，是为了跨平台。</p>
+<p><img src="media/16065645334177/16070469806510.jpg"></p>
+<p>集合框架的读写：</p>
+<ul>
+<li><code>stringList += &quot;num: 3&quot;</code> 等价于  <code>stringList.add(&quot;num: 3&quot;)</code></li>
+<li><code>stringList -= &quot;num: 3&quot;</code> 等价于 remove</li>
+<li><code>stringList[5] = &quot;Hello World&quot;</code> 等价于 set</li>
+<li><code>val a = stringList[5]</code> 等价于 get</li>
+<li><code>map[&quot;Hello&quot;] = 10</code></li>
+<li><code>println(map[&quot;Hello&quot;])</code></li>
+</ul>
+<h3 id="Pair"><a href="#Pair" class="headerlink" title="Pair"></a>Pair</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-comment">// 创建 pair</span><br><span class="hljs-keyword">val</span> pair = <span class="hljs-string">&quot;Hello&quot;</span> to <span class="hljs-string">&quot;Kotlin&quot;</span><br><span class="hljs-keyword">val</span> pair2 = Pair(<span class="hljs-string">&quot;Hello&quot;</span>, <span class="hljs-string">&quot;Kotlin&quot;</span>)<br><br><span class="hljs-comment">// 读取 pair</span><br><span class="hljs-keyword">val</span> first = pair.first<br><span class="hljs-keyword">val</span> second = pair.second<br><span class="hljs-keyword">val</span> (x, y) = pair<br></code></pre></td></tr></table></figure>
+
+<h3 id="Triple"><a href="#Triple" class="headerlink" title="Triple"></a>Triple</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-comment">// 创建 triple</span><br><span class="hljs-keyword">val</span> triple = Triple(<span class="hljs-string">&quot;Hello&quot;</span>, <span class="hljs-string">&quot;Kotlin&quot;</span>, <span class="hljs-number">3.0</span>)<br><br><span class="hljs-comment">// 读取 pair</span><br><span class="hljs-keyword">val</span> first = triple.first<br><span class="hljs-keyword">val</span> second = triple.second<br><span class="hljs-keyword">val</span> third = triple.third<br><span class="hljs-keyword">val</span> (x, y, x) = triple<br></code></pre></td></tr></table></figure>
+
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><ul>
+<li>Kotlin 中，函数也是一种类型，函数是 “一等公民”</li>
+<li>可以赋值、传递</li>
+</ul>
+<h3 id="函数定义"><a href="#函数定义" class="headerlink" title="函数定义"></a>函数定义</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">main</span><span class="hljs-params">(args: <span class="hljs-type">Array</span>&lt;<span class="hljs-type">String</span>&gt;)</span></span>: <span class="hljs-built_in">Unit</span> &#123;<br>    println(args.contentToString())<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>关键字 fun</li>
+<li>函数名</li>
+<li>参数列表</li>
+<li>返回值类型（可类型推导）</li>
+<li>方法和函数的区别：方法有一个 <strong>receiver</strong></li>
+</ul>
+<h3 id="函数的类型"><a href="#函数的类型" class="headerlink" title="函数的类型"></a>函数的类型</h3><ul>
+<li><code>() -&gt; Unit</code></li>
+<li><code>(Int) -&gt; String</code></li>
+<li><code>Foo.(String, Long) -&gt; Any</code> ==z <code>(Foo, String, Long) -&gt; Any</code></li>
+</ul>
+<h3 id="函数的引用"><a href="#函数的引用" class="headerlink" title="函数的引用"></a>函数的引用</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">foo</span><span class="hljs-params">()</span></span>&#123;&#125;<br><span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">foo</span><span class="hljs-params">(p0: <span class="hljs-type">Int</span>)</span></span>: String&#123;&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">bar</span><span class="hljs-params">(p0: <span class="hljs-type">String</span>, p1: <span class="hljs-type">Long</span>)</span></span>: Any&#123;&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>::foo</code></li>
+<li><code>Foo::bar</code></li>
+<li><code>val f = ::foo</code></li>
+<li><code>val g = ::foo</code></li>
+<li><code>val h = Foo::bar</code></li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">val</span> foo = Foo()<br><span class="hljs-comment">// 绑定 receiver 的函数引用</span><br><span class="hljs-keyword">val</span> m: (String, <span class="hljs-built_in">Long</span>) -&gt; Any = foo::bar<br></code></pre></td></tr></table></figure>
+
+<h3 id="变长参数"><a href="#变长参数" class="headerlink" title="变长参数"></a>变长参数</h3><p>vararg</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">multiParameters</span><span class="hljs-params">(<span class="hljs-keyword">vararg</span> ints: <span class="hljs-type">Int</span>)</span></span> &#123;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="多返回值"><a href="#多返回值" class="headerlink" title="多返回值"></a>多返回值</h3><ul>
+<li>Pair</li>
+<li>Triple</li>
+</ul>
+<h3 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h3><ul>
+<li>具名参数</li>
+</ul>
+
+      </section>
+      <section class="extra">
+        
+        <ul class="copyright">
+  
+  <li><strong>本文作者：</strong>Mlya</li>
+  <li><strong>本文链接：</strong><a href="https://blog.mlya.xyz/2021/02/16/Kotlin-%E5%86%85%E7%BD%AE%E7%B1%BB%E5%9E%8B/index.html">https://blog.mlya.xyz/2021/02/16/Kotlin-%E5%86%85%E7%BD%AE%E7%B1%BB%E5%9E%8B/index.html</a></li>
+  <li><strong>版权声明：</strong>本博客所有文章均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
+      rel="external nofollow" target="_blank"> BY-NC-SA </a>许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+        <section class="donate">
+  <div class="qrcode">
+    <img src="http://cdn.mlya.xyz/WechatIMG965.jpeg">
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a></li></ul>
+
+        
+<nav class="nav">
+  
+    <a href="/2021/02/16/Kotlin-%E8%A1%A8%E8%BE%BE%E5%BC%8F/"><i class="iconfont iconleft"></i>Kotlin 表达式</a>
+  
+  
+    <a href="/2021/02/11/Android-%E9%9F%B3%E8%A7%86%E9%A2%91%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E9%9F%B3%E8%A7%86%E9%A2%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">Android 音视频开发学习笔记 - 音视频基础知识<i class="iconfont iconright"></i></a>
+  
+</nav>
+
+      </section>
+      
+      <section class="comments">
+  
+  <div class="btn" id="comments-btn">查看评论</div>
+  
+  
+</section>
+      
+    </section>
+  </div>
+</article>
+  </div>
+</main>
+  <footer class="footer">
+  <div class="footer-social">
+    
+    
+    
+    
+    
+    <a href="tencent://message/?Menu=yes&uin=476441969 " target="_blank" onMouseOver="this.style.color= '#12B7F5'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  iconQQ "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://github.com/dcr309duan " target="_blank" onMouseOver="this.style.color= '#24292E'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  icongithub-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="mailto:dcr309duan@gmail.com " target="_blank" onMouseOver="this.style.color='#FF3B00'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  iconmail"></i>
+    </a>
+    
+  </div>
+  <div class="footer-copyright"><div><a href="http://www.beian.miit.gov.cn/" rel="external nofollow" target="_blank">京ICP备20017514号</a><div style="width:300px;margin:0 auto; padding:20px 0;"><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802031832" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><p style="float:left;height:20px;line-height:20px;margin:0px 0px 0px 5px; color:#939393;">京公网安备 11010802031832号</p></a></div></div></div>
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  <div class="fab fab-daovoice">
+    <i class="iconfont iconcomment"></i>
+  </div>
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+</body>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i["DaoVoiceObject"] = r;
+    i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    a.charset = "utf-8";
+    m.parentNode.insertBefore(a, m)
+  })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
+    "//widget.daovoice.io/widget/0f81ff2f.js", "daovoice")
+  daovoice('init', {
+    app_id: ""
+  }, {
+    launcher: {
+      disableLauncherIcon: true,
+    },
+  });
+  daovoice('update');
+</script>
+
+
+
+<script>
+  (function () {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</html>
