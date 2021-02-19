@@ -1,0 +1,451 @@
+
+
+<!DOCTYPE html>
+<html lang="en" color-mode=light>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Kotlin 函数进阶 - 开发技术笔记</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+
+  
+  
+  <meta name="description" content="Kotlin 函数进阶高阶函数高阶函数就是，参数为函数..."> 
+  
+  <meta name="author" content="Mlya"> 
+
+  
+    <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  
+  
+    <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  
+  
+    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  
+  
+    <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_s6x2xcokxrl.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+  
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      lazyload: {
+        enable: false,
+        only_post: 'false',
+        loading: '/images/theme/loading.gif'
+      },
+      donate: {
+        enable: true,
+        alipay: 'http://cdn.mlya.xyz/WechatIMG965.jpeg',
+        wechat: 'http://cdn.mlya.xyz/WechatIMG964.jpeg'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: true
+      },
+      preview: {
+        background: {
+          default: '/images/theme/welcome-image.jpg',
+          api: ''
+        },
+        motto: {
+          default: '我在开了灯的床头下，想问问自己的心啊。',
+          api: 'https://v1.hitokoto.cn/?encode=text&c=d'
+        },
+      },
+      qrcode: {
+        enable: true,
+        type: 'url',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+      }
+    }
+  </script>
+
+  
+
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body class="lock-screen">
+  <div class="loading"></div>
+  
+
+
+<nav class="navbar">
+  <div class="left">
+    
+      <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+    
+    
+      <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+    
+  </div>
+  <div class="center">Kotlin 函数进阶</div>
+  <div class="right">
+    <i class="iconfont iconmenu j-navbar-menu"></i>
+  </div>
+  
+    <div class="qrcode"></div>
+  
+</nav>
+
+  <nav class="menu">
+  <div class="menu-wrap">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content">
+      
+      
+      
+      
+      <li class="menu-item"><a href="/ " class="underline"> 首页</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/archives " class="underline"> 归档</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/tags " class="underline"> 标签</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/categories " class="underline"> 分类</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/about " class="underline"> 关于</a></li>
+      
+    </ul>
+    <div class="menu-copyright"><div><a href="http://www.beian.miit.gov.cn/" rel="external nofollow" target="_blank">京ICP备20017514号</a><div style="width:300px;margin:0 auto; padding:20px 0;"><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802031832" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><p style="float:left;height:20px;line-height:20px;margin:0px 0px 0px 5px; color:#939393;">京公网安备 11010802031832号</p></a></div></div></div>
+  </div>
+</nav>
+  <main id="main">
+  <div class="container" id="container">
+    <article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img src="http://cdn.mlya.xyz/mweb/IMG8408.jpg" draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">Kotlin 函数进阶</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>February 19, 2021</span
+        class="post-info-item">
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>2114</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        <h1 id="Kotlin-函数进阶"><a href="#Kotlin-函数进阶" class="headerlink" title="Kotlin 函数进阶"></a>Kotlin 函数进阶</h1><h2 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h2><p>高阶函数就是，参数为函数hove返回值为函数的函数，可以理解为函数的函数（类似于数学中函数的高阶的概念）</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">inline</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> IntArray.<span class="hljs-title">forEach</span><span class="hljs-params">(action: (<span class="hljs-type">Int</span>) -&gt; <span class="hljs-type">Unit</span>)</span></span>: <span class="hljs-built_in">Unit</span> &#123;<br>    <span class="hljs-keyword">for</span> (element <span class="hljs-keyword">in</span> <span class="hljs-keyword">this</span>) action(element)<br>&#125;<br><br><span class="hljs-keyword">inline</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-type">&lt;R&gt;</span> IntArray.<span class="hljs-title">map</span><span class="hljs-params">(transform: (<span class="hljs-type">Int</span>) -&gt; <span class="hljs-type">R</span>)</span></span>: List&lt;R&gt; &#123;<br>    <span class="hljs-keyword">return</span> mapTo(ArrayList&lt;R&gt;(size), transform)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>函数引用：<code>::println</code></p>
+</blockquote>
+<ul>
+<li>Lambda 作为最后一个函数参数，可以将大括号放在外面</li>
+<li>只有一个 Lambda 表达式作为参数，可省略小括号</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs kotlin">intArray.forEach &#123;<br>    println(<span class="hljs-string">&quot;Hello <span class="hljs-variable">$it</span>&quot;</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="内联函数"><a href="#内联函数" class="headerlink" title="内联函数"></a>内联函数</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">val</span> ints = intArrayOf(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>)<br>ints.forEach &#123;<br>    println(<span class="hljs-string">&quot;Hello <span class="hljs-variable">$it</span>&quot;</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><code>forEach</code> 函数的定义是使用 <code>inline</code> 关键字的，定义为乐内联函数。</p>
+<p>内联函数是为了提升性能。</p>
+<p>local return</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs kotlin">ints.forEach &#123;<br>    <span class="hljs-keyword">if</span> (it == <span class="hljs-number">3</span>) <span class="hljs-keyword">return</span><span class="hljs-symbol">@forEach</span><br>    println(it)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>non-local return</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    ints.forEach &#123;<br>        <span class="hljs-comment">// 这里就是 non-local return，将直接把 main 函数 return 掉</span><br>        <span class="hljs-keyword">return</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>使用 <code>crossinline</code> 禁止 non-local inline</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">inline</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">Runnable</span><span class="hljs-params">(<span class="hljs-keyword">crossinline</span> block: () -&gt; <span class="hljs-type">Unit</span>)</span></span>: Runnable &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">object</span>: Runnable &#123;<br>        <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">run</span><span class="hljs-params">()</span></span> &#123;<br>            block()<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>如果使用 <code>noninline</code> 禁止函数参数被内联</p>
+<h3 id="内联属性"><a href="#内联属性" class="headerlink" title="内联属性"></a>内联属性</h3><ul>
+<li>没有 backing field 属性的 getter/setter 可以被内联</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">var</span> pocket: <span class="hljs-built_in">Double</span> = <span class="hljs-number">0.0</span><br><span class="hljs-keyword">var</span> money: <span class="hljs-built_in">Double</span><br>    <span class="hljs-keyword">inline</span> <span class="hljs-keyword">get</span>() = pocket<br>    <span class="hljs-keyword">inline</span> <span class="hljs-keyword">set</span>(value) &#123;<br>        pocket = value<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="内联函数的限制"><a href="#内联函数的限制" class="headerlink" title="内联函数的限制"></a>内联函数的限制</h3><ul>
+<li>public/protected 的内联方法只能访问对应类的 public 成员</li>
+<li>内联函数的内联函数参数不能被存储</li>
+<li>内联函数的内联函数参数只能传递给其他内联函数参数</li>
+</ul>
+<h2 id="几个常用的高阶函数"><a href="#几个常用的高阶函数" class="headerlink" title="几个常用的高阶函数"></a>几个常用的高阶函数</h2><p><img src="http://cdn.mlya.xyz/mweb/16134875559008.jpg" alt="-w522"></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    <span class="hljs-keyword">val</span> person = Person(<span class="hljs-string">&quot;dcr&quot;</span>, <span class="hljs-number">20</span>)<br>    person.let(::println)<br>    person.run(::println)<br><br>    <span class="hljs-keyword">val</span> person2 = person.also &#123; it.name = <span class="hljs-string">&quot;hhh&quot;</span> &#125;<br>    println(person2)<br>    <span class="hljs-keyword">val</span> person3 = person.apply &#123; name = <span class="hljs-string">&quot;bbb&quot;</span> &#125;<br>    println(person3)<br><br>    File(<span class="hljs-string">&quot;build.gradle&quot;</span>).inputStream().reader().buffered().use &#123;<br>        println(it.readLines())<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="集合变换与序列"><a href="#集合变换与序列" class="headerlink" title="集合变换与序列"></a>集合变换与序列</h2><h3 id="集合的遍历"><a href="#集合的遍历" class="headerlink" title="集合的遍历"></a>集合的遍历</h3><ul>
+<li>for in</li>
+<li>forEach</li>
+</ul>
+<h3 id="集合的映射操作举例"><a href="#集合的映射操作举例" class="headerlink" title="集合的映射操作举例"></a>集合的映射操作举例</h3><p><img src="http://cdn.mlya.xyz/mweb/16135281784507.jpg" alt="-w449"></p>
+<ul>
+<li>terminal operator</li>
+<li>asSequence</li>
+</ul>
+<h2 id="SAM-Single-Abstract-Method-转换"><a href="#SAM-Single-Abstract-Method-转换" class="headerlink" title="SAM(Single Abstract Method) 转换"></a>SAM(Single Abstract Method) 转换</h2><ul>
+<li>Java 中：单方法接口 -&gt; Lambda</li>
+</ul>
+<p><img src="http://cdn.mlya.xyz/mweb/16135297228954.jpg" alt="-w447"></p>
+<p><img src="http://cdn.mlya.xyz/mweb/16135297586110.jpg" alt="-w540"></p>
+<p><img src="http://cdn.mlya.xyz/mweb/16135298367314.jpg" alt="-w532"></p>
+<p><img src="http://cdn.mlya.xyz/mweb/16135299480994.jpg" alt="-w467"></p>
+<ul>
+<li>Java 的 Lambda 是假的，使用 SAM 转换</li>
+<li>Kotlin 的 Lambda 是真的，支持 SAM 转换</li>
+</ul>
+<p>注意这样的代码，会有问题，add 和 remove 的不是同一个 Listener，因为会自动生成一个匿名内部类</p>
+<p><img src="http://cdn.mlya.xyz/mweb/16135305130074.jpg" alt="-w526"></p>
+<p>要这样写：</p>
+<p><img src="http://cdn.mlya.xyz/mweb/16135305701194.jpg" alt="-w483"></p>
+<p>或者这样，以避免发生 SAM 转换</p>
+<p><img src="http://cdn.mlya.xyz/mweb/16135306109922.jpg" alt="-w444"></p>
+
+      </section>
+      <section class="extra">
+        
+        <ul class="copyright">
+  
+  <li><strong>本文作者：</strong>Mlya</li>
+  <li><strong>本文链接：</strong><a href="https://blog.mlya.xyz/2021/02/19/Kotlin-%E5%87%BD%E6%95%B0%E8%BF%9B%E9%98%B6/index.html">https://blog.mlya.xyz/2021/02/19/Kotlin-%E5%87%BD%E6%95%B0%E8%BF%9B%E9%98%B6/index.html</a></li>
+  <li><strong>版权声明：</strong>本博客所有文章均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
+      rel="external nofollow" target="_blank"> BY-NC-SA </a>许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+        <section class="donate">
+  <div class="qrcode">
+    <img src="http://cdn.mlya.xyz/WechatIMG965.jpeg">
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a></li></ul>
+
+        
+<nav class="nav">
+  
+  
+    <a href="/2021/02/16/IDEA-%E4%BB%A3%E7%A0%81%E6%8A%98%E5%8F%A0/">IDEA 代码折叠<i class="iconfont iconright"></i></a>
+  
+</nav>
+
+      </section>
+      
+      <section class="comments">
+  
+  <div class="btn" id="comments-btn">查看评论</div>
+  
+  
+</section>
+      
+    </section>
+  </div>
+</article>
+  </div>
+</main>
+  <footer class="footer">
+  <div class="footer-social">
+    
+    
+    
+    
+    
+    <a href="tencent://message/?Menu=yes&uin=476441969 " target="_blank" onMouseOver="this.style.color= '#12B7F5'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  iconQQ "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://github.com/dcr309duan " target="_blank" onMouseOver="this.style.color= '#24292E'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  icongithub-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="mailto:dcr309duan@gmail.com " target="_blank" onMouseOver="this.style.color='#FF3B00'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  iconmail"></i>
+    </a>
+    
+  </div>
+  <div class="footer-copyright"><div><a href="http://www.beian.miit.gov.cn/" rel="external nofollow" target="_blank">京ICP备20017514号</a><div style="width:300px;margin:0 auto; padding:20px 0;"><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802031832" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><p style="float:left;height:20px;line-height:20px;margin:0px 0px 0px 5px; color:#939393;">京公网安备 11010802031832号</p></a></div></div></div>
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  <div class="fab fab-daovoice">
+    <i class="iconfont iconcomment"></i>
+  </div>
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+</body>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i["DaoVoiceObject"] = r;
+    i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    a.charset = "utf-8";
+    m.parentNode.insertBefore(a, m)
+  })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
+    "//widget.daovoice.io/widget/0f81ff2f.js", "daovoice")
+  daovoice('init', {
+    app_id: ""
+  }, {
+    launcher: {
+      disableLauncherIcon: true,
+    },
+  });
+  daovoice('update');
+</script>
+
+
+
+<script>
+  (function () {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</html>
