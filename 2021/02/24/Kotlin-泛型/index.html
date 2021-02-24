@@ -1,0 +1,451 @@
+
+
+<!DOCTYPE html>
+<html lang="en" color-mode=light>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Kotlin 泛型 - 开发技术笔记</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+
+  
+  
+  <meta name="description" content="Kotlin 泛型泛型的基本概念泛型是类型的抽象。
+泛..."> 
+  
+  <meta name="author" content="Mlya"> 
+
+  
+    <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  
+  
+    <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  
+  
+    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  
+  
+    <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_s6x2xcokxrl.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+  
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      lazyload: {
+        enable: false,
+        only_post: 'false',
+        loading: '/images/theme/loading.gif'
+      },
+      donate: {
+        enable: true,
+        alipay: 'http://cdn.mlya.xyz/WechatIMG965.jpeg',
+        wechat: 'http://cdn.mlya.xyz/WechatIMG964.jpeg'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: true
+      },
+      preview: {
+        background: {
+          default: '/images/theme/welcome-image.jpg',
+          api: ''
+        },
+        motto: {
+          default: '我在开了灯的床头下，想问问自己的心啊。',
+          api: 'https://v1.hitokoto.cn/?encode=text&c=d'
+        },
+      },
+      qrcode: {
+        enable: true,
+        type: 'url',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+      }
+    }
+  </script>
+
+  
+
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body class="lock-screen">
+  <div class="loading"></div>
+  
+
+
+<nav class="navbar">
+  <div class="left">
+    
+      <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+    
+    
+      <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+    
+  </div>
+  <div class="center">Kotlin 泛型</div>
+  <div class="right">
+    <i class="iconfont iconmenu j-navbar-menu"></i>
+  </div>
+  
+    <div class="qrcode"></div>
+  
+</nav>
+
+  <nav class="menu">
+  <div class="menu-wrap">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content">
+      
+      
+      
+      
+      <li class="menu-item"><a href="/ " class="underline"> 首页</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/archives " class="underline"> 归档</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/tags " class="underline"> 标签</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/categories " class="underline"> 分类</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/about " class="underline"> 关于</a></li>
+      
+    </ul>
+    <div class="menu-copyright"><div><a href="http://www.beian.miit.gov.cn/" rel="external nofollow" target="_blank">京ICP备20017514号</a><div style="width:300px;margin:0 auto; padding:20px 0;"><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802031832" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><p style="float:left;height:20px;line-height:20px;margin:0px 0px 0px 5px; color:#939393;">京公网安备 11010802031832号</p></a></div></div></div>
+  </div>
+</nav>
+  <main id="main">
+  <div class="container" id="container">
+    <article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img src="http://cdn.mlya.xyz/mweb/IMG8258.jpeg" draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">Kotlin 泛型</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>February 24, 2021</span
+        class="post-info-item">
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>2411</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        <h1 id="Kotlin-泛型"><a href="#Kotlin-泛型" class="headerlink" title="Kotlin 泛型"></a>Kotlin 泛型</h1><h2 id="泛型的基本概念"><a href="#泛型的基本概念" class="headerlink" title="泛型的基本概念"></a>泛型的基本概念</h2><p>泛型是类型的抽象。</p>
+<h3 id="泛型的基本声明方法"><a href="#泛型的基本声明方法" class="headerlink" title="泛型的基本声明方法"></a>泛型的基本声明方法</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-comment">// 函数声明泛型</span><br><span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-type">&lt;T&gt;</span> <span class="hljs-title">maxOf</span><span class="hljs-params">(a: <span class="hljs-type">T</span>, b: <span class="hljs-type">T</span>)</span></span>: T<br><br><span class="hljs-comment">// 类型声明泛型</span><br><span class="hljs-keyword">sealed</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">List</span>&lt;<span class="hljs-type">T</span>&gt;</span><br><br><span class="hljs-comment">// 泛型实参，这里可以利用类型推导，省略 &lt;String&gt;</span><br><span class="hljs-keyword">val</span> max = maxOf&lt;String&gt;(<span class="hljs-string">&quot;Hello, &quot;</span>World<span class="hljs-string">&quot;)</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="泛型的类型约束"><a href="#泛型的类型约束" class="headerlink" title="泛型的类型约束"></a>泛型的类型约束</h2><p>泛型的类型约束，可以使用 <code>:</code> 来定义，下面的定义表示 <code>T</code> 类型必须实现了 <code>Comparable</code> 接口。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-type">&lt;T : Comparable&lt;T&gt;</span>&gt; <span class="hljs-title">maxOf</span><span class="hljs-params">(a: <span class="hljs-type">T</span>, b: <span class="hljs-type">T</span>)</span></span>: T &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">if</span> (a &lt; b) b <span class="hljs-keyword">else</span> a<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="多个约束、多个泛型参数"><a href="#多个约束、多个泛型参数" class="headerlink" title="多个约束、多个泛型参数"></a>多个约束、多个泛型参数</h3><p>可以使用 where 语句，定义多个约束</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-type">&lt;T, R&gt;</span> <span class="hljs-title">callMax</span><span class="hljs-params">(a: <span class="hljs-type">T</span>, b: <span class="hljs-type">T</span>)</span></span>: R<br>        <span class="hljs-keyword">where</span> T : Comparable&lt;T&gt;, T : () -&gt; R, R : Number &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">if</span> (a &gt; b) a() <span class="hljs-keyword">else</span> b()<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="泛型的型变"><a href="#泛型的型变" class="headerlink" title="泛型的型变"></a>泛型的型变</h2><p>泛型的型变指的是 <strong>泛型实参的继承关系</strong> 对 <strong>泛型类型的继承关系</strong> 的影响。</p>
+<p>泛型型变包括：</p>
+<ul>
+<li>协变：继承关系一致</li>
+<li>逆变：继承关系相反</li>
+<li>不变：没有继承关系</li>
+</ul>
+<h3 id="协变"><a href="#协变" class="headerlink" title="协变"></a>协变</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">sealed</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">List</span>&lt;<span class="hljs-type">T</span>&gt; </span>&#123;<br>    <span class="hljs-keyword">object</span> Nil: List&lt;<span class="hljs-built_in">Nothing</span>&gt;()<br>&#125;<br><br><span class="hljs-comment">// 这里会报错，因为 List&lt;Nothing&gt; 和 List&lt;T&gt; 之间没有继承关系</span><br><span class="hljs-keyword">val</span> list = List.Cons(<span class="hljs-number">1.0</span>, List.Nil)<br><br><span class="hljs-comment">// 这里应该是协变的关系</span><br><span class="hljs-keyword">sealed</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">List</span>&lt;<span class="hljs-type">out T</span>&gt; </span>&#123;<br>    <span class="hljs-keyword">object</span> Nil: List&lt;<span class="hljs-built_in">Nothing</span>&gt;()<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><img src="http://cdn.mlya.xyz/mweb/16140480962770.jpg" alt="-w511"></p>
+<h4 id="协变点"><a href="#协变点" class="headerlink" title="协变点"></a>协变点</h4><p><img src="http://cdn.mlya.xyz/mweb/16140481226388.jpg" alt="-w537"></p>
+<ul>
+<li>函数返回类型是泛型，应该定义为协变的</li>
+<li>泛型类型作为生产者，为协变</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Book</span></span><br><br><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">EduBook</span>: <span class="hljs-type">Book</span></span><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BookStore</span>&lt;<span class="hljs-type">out T: Book</span>&gt; </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">getBook</span><span class="hljs-params">()</span></span>: T &#123;<br>    <br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">covariant</span><span class="hljs-params">()</span></span> &#123;<br>    <span class="hljs-keyword">val</span> eduBookStore: BookStore&lt;EduBook&gt; = BookStore&lt;EduBook&gt;()<br>    <span class="hljs-keyword">val</span> bookStore: BookStore&lt;Book&gt; = eduBookStore<br>    <br>    <span class="hljs-keyword">val</span> book: Book = bookStore.getBook()<br>    <span class="hljs-keyword">val</span> eduBook: EduBook = eduBookStore.getBook()<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="逆变"><a href="#逆变" class="headerlink" title="逆变"></a>逆变</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Comparable</span>&lt;<span class="hljs-type">in T</span>&gt; </span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">operator</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">compareTo</span><span class="hljs-params">(other: <span class="hljs-type">T</span>)</span></span>: <span class="hljs-built_in">Int</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><img src="http://cdn.mlya.xyz/mweb/16140486248774.jpg" alt="-w494"></p>
+<ul>
+<li>如果我要一个 Number，那么给一个 Int 也是可以的，子类可以替换父类</li>
+<li>一个可以比较 Int 的 Comparable<Int>，可以用 Comparable<Number> 替换，可以认为 Comparable<Number> 是 Comparable<Int> 的子类，正好是相反的。</li>
+<li>消费者是逆变</li>
+</ul>
+<h2 id="UnsafeVariance"><a href="#UnsafeVariance" class="headerlink" title="UnsafeVariance"></a>UnsafeVariance</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">sealed</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">List</span>&lt;<span class="hljs-type">out T</span>&gt; </span>&#123;<br>    <span class="hljs-comment">// 这里在协变中引入了逆变点</span><br>    <span class="hljs-keyword">operator</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">contains</span><span class="hljs-params">(t: @<span class="hljs-type">UnsafeVariance</span> <span class="hljs-type">T</span>)</span></span>: <span class="hljs-built_in">Boolean</span> &#123;<br>    <br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>违反型变约束的安全前提：</p>
+<ul>
+<li>泛型参数协变，逆变点不能引起修改，即始终 <strong>只读不写</strong></li>
+<li>泛型参数逆变，协变点不得外部获取，即始终 <strong>只写不读</strong></li>
+</ul>
+<h2 id="星投影-Star-Projection"><a href="#星投影-Star-Projection" class="headerlink" title="星投影 Star Projection"></a>星投影 Star Projection</h2><ul>
+<li><code>*</code> 来替换类型声明</li>
+<li>如果在协变点上，那么返回泛型参数上限类型</li>
+<li>如果在逆变点上，那么返回参数下限类型</li>
+</ul>
+<p><img src="http://cdn.mlya.xyz/mweb/16140501345397.jpg" alt="-w487"></p>
+<ul>
+<li>不能直接或间接应用在属性或者函数上</li>
+<li>可以用在类型描述的场景<ul>
+<li>变量类型声明</li>
+<li>类型判断，<code>is</code> 表达式</li>
+<li><code>HashMap&lt;Sring, List&lt;*&gt;&gt;</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="泛型实现原理与内联特化"><a href="#泛型实现原理与内联特化" class="headerlink" title="泛型实现原理与内联特化"></a>泛型实现原理与内联特化</h2><p>与 Java 一样，Kotlin 泛型在编译完成后，也进行了类型擦除。</p>
+<ul>
+<li>泛型类型无法当作真实类型</li>
+</ul>
+<h3 id="内联特化"><a href="#内联特化" class="headerlink" title="内联特化"></a>内联特化</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">inline</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-type">&lt;<span class="hljs-keyword">reified</span> T&gt;</span> <span class="hljs-title">genericMethod</span><span class="hljs-params">(t: <span class="hljs-type">T</span>)</span></span> &#123;<br>    <br>    <span class="hljs-comment">// val t = T() // 因为无法确认是否有无参构造方法</span><br>    <span class="hljs-keyword">val</span> ts = Array&lt;T&gt;(<span class="hljs-number">3</span>) &#123;&#125;<br>    <span class="hljs-keyword">val</span> jclass = T::<span class="hljs-keyword">class</span>.java<br>    <span class="hljs-keyword">val</span> list = ArrayList&lt;T&gt;()<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>下面的代码是合法的，可以不用传 class 对象。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">inline</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-type">&lt;<span class="hljs-keyword">reified</span> T&gt;</span> Gson.<span class="hljs-title">fromJson</span><span class="hljs-params">(json: <span class="hljs-type">String</span>)</span></span>: T = fromJson(json, T::<span class="hljs-keyword">class</span>.java)<br></code></pre></td></tr></table></figure>
+
+      </section>
+      <section class="extra">
+        
+        <ul class="copyright">
+  
+  <li><strong>本文作者：</strong>Mlya</li>
+  <li><strong>本文链接：</strong><a href="https://blog.mlya.xyz/2021/02/24/Kotlin-%E6%B3%9B%E5%9E%8B/index.html">https://blog.mlya.xyz/2021/02/24/Kotlin-%E6%B3%9B%E5%9E%8B/index.html</a></li>
+  <li><strong>版权声明：</strong>本博客所有文章均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
+      rel="external nofollow" target="_blank"> BY-NC-SA </a>许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+        <section class="donate">
+  <div class="qrcode">
+    <img src="http://cdn.mlya.xyz/WechatIMG965.jpeg">
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a></li></ul>
+
+        
+<nav class="nav">
+  
+  
+    <a href="/2021/02/22/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/">Kotlin 类型进阶<i class="iconfont iconright"></i></a>
+  
+</nav>
+
+      </section>
+      
+      <section class="comments">
+  
+  <div class="btn" id="comments-btn">查看评论</div>
+  
+  
+</section>
+      
+    </section>
+  </div>
+</article>
+  </div>
+</main>
+  <footer class="footer">
+  <div class="footer-social">
+    
+    
+    
+    
+    
+    <a href="tencent://message/?Menu=yes&uin=476441969 " target="_blank" onMouseOver="this.style.color= '#12B7F5'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  iconQQ "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://github.com/dcr309duan " target="_blank" onMouseOver="this.style.color= '#24292E'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  icongithub-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="mailto:dcr309duan@gmail.com " target="_blank" onMouseOver="this.style.color='#FF3B00'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  iconmail"></i>
+    </a>
+    
+  </div>
+  <div class="footer-copyright"><div><a href="http://www.beian.miit.gov.cn/" rel="external nofollow" target="_blank">京ICP备20017514号</a><div style="width:300px;margin:0 auto; padding:20px 0;"><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802031832" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><p style="float:left;height:20px;line-height:20px;margin:0px 0px 0px 5px; color:#939393;">京公网安备 11010802031832号</p></a></div></div></div>
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  <div class="fab fab-daovoice">
+    <i class="iconfont iconcomment"></i>
+  </div>
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+</body>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i["DaoVoiceObject"] = r;
+    i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    a.charset = "utf-8";
+    m.parentNode.insertBefore(a, m)
+  })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
+    "//widget.daovoice.io/widget/0f81ff2f.js", "daovoice")
+  daovoice('init', {
+    app_id: ""
+  }, {
+    launcher: {
+      disableLauncherIcon: true,
+    },
+  });
+  daovoice('update');
+</script>
+
+
+
+<script>
+  (function () {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</html>
