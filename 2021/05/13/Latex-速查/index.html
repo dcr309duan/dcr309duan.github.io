@@ -1,0 +1,515 @@
+
+
+<!DOCTYPE html>
+<html lang="en" color-mode=light>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Latex 速查 - 开发技术笔记</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+
+  
+  
+  <meta name="description" content="$\LaTeX$ 速查
+  建议先通读 一份不太简短的..."> 
+  
+  <meta name="author" content="Mlya"> 
+
+  
+    <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  
+  
+    <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  
+  
+    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  
+  
+    <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_s6x2xcokxrl.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+  
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      lazyload: {
+        enable: false,
+        only_post: 'false',
+        loading: '/images/theme/loading.gif'
+      },
+      donate: {
+        enable: true,
+        alipay: 'http://cdn.mlya.xyz/WechatIMG965.jpeg',
+        wechat: 'http://cdn.mlya.xyz/WechatIMG964.jpeg'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: true
+      },
+      preview: {
+        background: {
+          default: '/images/theme/welcome-image.jpg',
+          api: ''
+        },
+        motto: {
+          default: '我在开了灯的床头下，想问问自己的心啊。',
+          api: 'https://v1.hitokoto.cn/?encode=text&c=d'
+        },
+      },
+      qrcode: {
+        enable: true,
+        type: 'url',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+      }
+    }
+  </script>
+
+  
+
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body class="lock-screen">
+  <div class="loading"></div>
+  
+
+
+<nav class="navbar">
+  <div class="left">
+    
+      <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+    
+    
+      <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+    
+  </div>
+  <div class="center">Latex 速查</div>
+  <div class="right">
+    <i class="iconfont iconmenu j-navbar-menu"></i>
+  </div>
+  
+    <div class="qrcode"></div>
+  
+</nav>
+
+  <nav class="menu">
+  <div class="menu-wrap">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content">
+      
+      
+      
+      
+      <li class="menu-item"><a href="/ " class="underline"> 首页</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/archives " class="underline"> 归档</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/tags " class="underline"> 标签</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/categories " class="underline"> 分类</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/about " class="underline"> 关于</a></li>
+      
+    </ul>
+    <div class="menu-copyright"><div><a href="http://www.beian.miit.gov.cn/" rel="external nofollow" target="_blank">京ICP备20017514号</a><div style="width:300px;margin:0 auto; padding:20px 0;"><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802031832" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><p style="float:left;height:20px;line-height:20px;margin:0px 0px 0px 5px; color:#939393;">京公网安备 11010802031832号</p></a></div></div></div>
+  </div>
+</nav>
+  <main id="main">
+  <div class="container" id="container">
+    <article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img src="http://cdn.mlya.xyz/mweb/IMG9789.jpeg" draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">Latex 速查</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>May 13, 2021</span
+        class="post-info-item">
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>15185</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        <h1 id="LaTeX-速查"><a href="#LaTeX-速查" class="headerlink" title="$\LaTeX$ 速查"></a>$\LaTeX$ 速查</h1><blockquote>
+<p>  建议先通读 <a href="res/lshort-zh-cn.pdf">一份不太简短的 $\LaTeX$ 入门指南</a>。</p>
+</blockquote>
+<h2 id="最常用的命令"><a href="#最常用的命令" class="headerlink" title="最常用的命令"></a>最常用的命令</h2><ul>
+<li>  <code>\section&#123;&#125;</code>: 章节标题。</li>
+<li>  <code>\label&#123;&#125;</code>: 添加标签，结合 <code>\ref&#123;&#125;</code> 命令用于（section, subsection 等的）交叉引用。</li>
+<li>  <code>\cite&#123;&#125;</code>: 用于参考文献的引用，一般结合 BibTeX 使用。</li>
+<li>  <code>\begin&#123;enumerate&#125;</code>, <code>\end&#123;enumerate&#125;</code>, <code>\item</code>: 带序号的列表。</li>
+</ul>
+<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><h3 id="论文三线表构建"><a href="#论文三线表构建" class="headerlink" title="论文三线表构建"></a>论文三线表构建</h3><p>论文常用的三线表引入宏包：</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-keyword">\usepackage</span>&#123;booktabs&#125;<br></code></pre></td></tr></table></figure>
+
+<p>三线表的基本结构如下：</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-keyword">\begin</span>&#123;table&#125;[]<br><span class="hljs-keyword">\caption</span>&#123;Average results for the MLNN training based on wine dataset&#125;<br><span class="hljs-keyword">\centering</span><br><span class="hljs-keyword">\begin</span>&#123;tabular&#125;&#123;@&#123;&#125;cccc@&#123;&#125;&#125;<br><span class="hljs-keyword">\toprule</span><br>       <span class="hljs-built_in">&amp;</span> Objective Function <span class="hljs-built_in">&amp;</span> Accuracy on training set <span class="hljs-built_in">&amp;</span> Accuracy on test set <span class="hljs-keyword">\\</span> <span class="hljs-keyword">\midrule</span><br>DE     <span class="hljs-built_in">&amp;</span> 1.74E-01           <span class="hljs-built_in">&amp;</span> 92.53                    <span class="hljs-built_in">&amp;</span> 94.76                <span class="hljs-keyword">\\</span><br>GA-MPC <span class="hljs-built_in">&amp;</span> 2.99E-02           <span class="hljs-built_in">&amp;</span> 95.99                    <span class="hljs-built_in">&amp;</span> 93.83                <span class="hljs-keyword">\\</span><br>BGSA   <span class="hljs-built_in">&amp;</span> 1.29E-05           <span class="hljs-built_in">&amp;</span> 100.00                   <span class="hljs-built_in">&amp;</span> 99.06                <span class="hljs-keyword">\\</span> <span class="hljs-keyword">\bottomrule</span><br><span class="hljs-keyword">\end</span>&#123;tabular&#125;<br><span class="hljs-keyword">\label</span>&#123;tb:wineResult&#125;<br><span class="hljs-keyword">\end</span>&#123;table&#125;<br></code></pre></td></tr></table></figure>
+
+<p><img src="media/image-20210513093744239.png" alt="image-20210513093744239"></p>
+<ol>
+<li> <code>\begin&#123;table&#125;</code> 和 <code>\end&#123;table&#125;</code> 包裹的环境。</li>
+<li> <code>\caption</code> 指明标题/</li>
+<li> 使用 <code>\begin&#123;tabular&#125;</code> 和 <code>\end&#123;tabular&#125;</code> 包裹的环境。</li>
+<li> <code>\toprule</code>, <code>\midrule</code> 和 <code>\bottomrule</code> 分别表示表格的三条线。</li>
+<li> <code>\label&#123;&#125;</code> 用于交叉引用。</li>
+</ol>
+<p>可以使用 <a target="_blank" rel="noopener" href="https://www.tablesgenerator.com/latex_tables">Tables Generator</a> 这个网站快速生成表格代码。</p>
+<p><img src="media/image-20210513094119523.png" alt="image-20210513094119523"></p>
+<p>可以直接从 Excel 将表格复制到这里，然后选择「Booktabs table style」，将会自动使用三线表样式。</p>
+<p>调整好样式后，点击 下方的「Generate」按钮，即可生成表格代码。</p>
+<p><img src="media/image-20210513094342624.png" alt="image-20210513094342624"></p>
+<h3 id="超大表格处理"><a href="#超大表格处理" class="headerlink" title="超大表格处理"></a>超大表格处理</h3><p>经常出现表格过大的情况，解决方法有多种</p>
+<h4 id="缩放"><a href="#缩放" class="headerlink" title="缩放"></a>缩放</h4><p>如果表格超的不是特别多，可以接受一定程度的缩放，那么可以使用 <code>\resizebox</code> 来进行略微的缩放</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-keyword">\begin</span>&#123;table&#125;[]<br><span class="hljs-keyword">\caption</span>&#123;Simulation results and comparison on CEC 2011 real-world problems&#125;<br><span class="hljs-keyword">\resizebox</span>&#123;<span class="hljs-keyword">\textwidth</span>&#125;&#123;!&#125;&#123;<br><span class="hljs-keyword">\begin</span>&#123;tabular&#125;&#123;@&#123;&#125;cccccccc@&#123;&#125;&#125;<br><span class="hljs-comment">%% 表格的具体内容</span><br>&#125;<br><span class="hljs-keyword">\label</span>&#123;tb:cec2011result&#125;<br><span class="hljs-keyword">\end</span>&#123;table&#125;<br></code></pre></td></tr></table></figure>
+
+<p>上面是强制将表格内容缩放到页面宽度 <code>\textwidth</code>。</p>
+<h4 id="分表"><a href="#分表" class="headerlink" title="分表"></a>分表</h4><p>顾名思义，将一个大表拆分成多个表。</p>
+<h4 id="旋转表格"><a href="#旋转表格" class="headerlink" title="旋转表格"></a>旋转表格</h4><p>如果表格特别大，可以旋转表格，独占一页。</p>
+<p>引入宏包 <code>\usepackage[figuresright]&#123;rotating&#125;</code>。</p>
+<p>例如下面这个非常大的表格，使用 <code>\begin&#123;sidewaystable&#125;</code> 和 <code>\end&#123;sidewaystable&#125;</code> 所包裹的环境进行旋转。</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-keyword">\begin</span>&#123;sidewaystable&#125;[]<br><span class="hljs-keyword">\center</span><br><span class="hljs-keyword">\caption</span>&#123;CEC 2011 real-world problems&#125;<br><span class="hljs-keyword">\begin</span>&#123;tabular&#125;&#123;@&#123;&#125;cccc@&#123;&#125;&#125;<br><span class="hljs-keyword">\toprule</span><br>Problem     <span class="hljs-built_in">&amp;</span> No. of Dimensions                                                                                 <span class="hljs-built_in">&amp;</span> Optimization Objective                                                                                                                                                     <span class="hljs-built_in">&amp;</span> Application Area    <span class="hljs-keyword">\\</span> <span class="hljs-keyword">\midrule</span><br><span class="hljs-built_in">$</span>F<span class="hljs-built_in">_</span>1<span class="hljs-built_in">$</span>       <span class="hljs-built_in">&amp;</span> 6                                                                                                 <span class="hljs-built_in">&amp;</span> <span class="hljs-keyword">\begin</span>&#123;tabular&#125;[c]&#123;@&#123;&#125;c@&#123;&#125;&#125;Minimizing the summation of square errors <span class="hljs-keyword">\\</span> between the estimated wave and the target wave<span class="hljs-keyword">\end</span>&#123;tabular&#125;                                        <span class="hljs-built_in">&amp;</span> Communication       <span class="hljs-keyword">\\</span><br><span class="hljs-built_in">$</span>F<span class="hljs-built_in">_</span>2<span class="hljs-built_in">$</span>       <span class="hljs-built_in">&amp;</span> 30                                                                                                <span class="hljs-built_in">&amp;</span> Minimizing the potential energy of particlues interact through LJ cluster                                                                                                  <span class="hljs-built_in">&amp;</span> Chemistry           <span class="hljs-keyword">\\</span><br><span class="hljs-built_in">$</span>F<span class="hljs-built_in">_</span>3<span class="hljs-built_in">$</span>       <span class="hljs-built_in">&amp;</span> 1                                                                                                 <span class="hljs-built_in">&amp;</span> Maximizing the benzene concentration at the  end of the conversion reaction.                                                                                               <span class="hljs-built_in">&amp;</span> Chemistry           <span class="hljs-keyword">\\</span><br><span class="hljs-built_in">$</span>F<span class="hljs-built_in">_</span>4<span class="hljs-built_in">$</span>       <span class="hljs-built_in">&amp;</span> 1                                                                                                 <span class="hljs-built_in">&amp;</span> <span class="hljs-keyword">\begin</span>&#123;tabular&#125;[c]&#123;@&#123;&#125;c@&#123;&#125;&#125;Minimizing the performance index of <span class="hljs-keyword">\\</span> a first-order irreversible chemical reaction.<span class="hljs-keyword">\end</span>&#123;tabular&#125;                                               <span class="hljs-built_in">&amp;</span> Chemistry           <span class="hljs-keyword">\\</span><br><span class="hljs-built_in">$</span>F<span class="hljs-built_in">_</span>5<span class="hljs-built_in">$</span>       <span class="hljs-built_in">&amp;</span> 30                                                                                                <span class="hljs-built_in">&amp;</span> Minimizing the total Tersoff potential energy for a Si(B) model system.                                                                                                    <span class="hljs-built_in">&amp;</span> Chemistry           <span class="hljs-keyword">\\</span><br><span class="hljs-built_in">$</span>F<span class="hljs-built_in">_</span>6<span class="hljs-built_in">$</span>       <span class="hljs-built_in">&amp;</span> 30                                                                                                <span class="hljs-built_in">&amp;</span> Minimizing the total Tersoff potential energy for a Si(C) model system.                                                                                                    <span class="hljs-built_in">&amp;</span> Chemistry           <span class="hljs-keyword">\\</span><br><span class="hljs-built_in">$</span>F<span class="hljs-built_in">_</span>7<span class="hljs-built_in">$</span>       <span class="hljs-built_in">&amp;</span> 20                                                                                                <span class="hljs-built_in">&amp;</span> <span class="hljs-keyword">\begin</span>&#123;tabular&#125;[c]&#123;@&#123;&#125;c@&#123;&#125;&#125;Minimizing the module of the biggest among <span class="hljs-keyword">\\</span> the samples of the auto-correlation function<span class="hljs-keyword">\end</span>&#123;tabular&#125;                                         <span class="hljs-built_in">&amp;</span> Communication       <span class="hljs-keyword">\\</span><br><span class="hljs-built_in">$</span>F<span class="hljs-built_in">_</span>8<span class="hljs-built_in">$</span>       <span class="hljs-built_in">&amp;</span> 7                                                                                                 <span class="hljs-built_in">&amp;</span> Minimizing the total investment cost of the new transmission lines                                                                                                         <span class="hljs-built_in">&amp;</span> Power system        <span class="hljs-keyword">\\</span><br><span class="hljs-built_in">$</span>F<span class="hljs-built_in">_</span>9<span class="hljs-built_in">$</span>       <span class="hljs-built_in">&amp;</span> <span class="hljs-keyword">\begin</span>&#123;tabular&#125;[c]&#123;@&#123;&#125;c@&#123;&#125;&#125;g * d<span class="hljs-keyword">\\</span> g: no. of generator buses<span class="hljs-keyword">\\</span> d: no. of load buses.<span class="hljs-keyword">\end</span>&#123;tabular&#125; <span class="hljs-built_in">&amp;</span> Minimizing the usage rate deviations due to bilateral transactions                                                                                                         <span class="hljs-built_in">&amp;</span> Power system        <span class="hljs-keyword">\\</span><br><span class="hljs-built_in">$</span>F<span class="hljs-built_in">_</span>&#123;10&#125;<span class="hljs-built_in">$</span>    <span class="hljs-built_in">&amp;</span> 12                                                                                                <span class="hljs-built_in">&amp;</span> <span class="hljs-keyword">\begin</span>&#123;tabular&#125;[c]&#123;@&#123;&#125;c@&#123;&#125;&#125;Suppressing side-lobes, minimizing beamwidth, <span class="hljs-keyword">\\</span> achieving null control at desired directions.<span class="hljs-keyword">\end</span>&#123;tabular&#125;                                     <span class="hljs-built_in">&amp;</span> Communication       <span class="hljs-keyword">\\</span><br><span class="hljs-built_in">$</span>F<span class="hljs-built_in">_</span>&#123;11.1&#125;<span class="hljs-built_in">$</span>  <span class="hljs-built_in">&amp;</span> 120                                                                                               <span class="hljs-built_in">&amp;</span> Minimizing the fuel cost                                                                                                                                                   <span class="hljs-built_in">&amp;</span> Economics           <span class="hljs-keyword">\\</span><br><span class="hljs-built_in">$</span>F<span class="hljs-built_in">_</span>&#123;11.2&#125;<span class="hljs-built_in">$</span>  <span class="hljs-built_in">&amp;</span> 216                                                                                               <span class="hljs-built_in">&amp;</span> Minimizing the fuel cost                                                                                                                                                   <span class="hljs-built_in">&amp;</span> Economics           <span class="hljs-keyword">\\</span><br><span class="hljs-built_in">$</span>F<span class="hljs-built_in">_</span>&#123;11.3&#125;<span class="hljs-built_in">$</span>  <span class="hljs-built_in">&amp;</span> 6                                                                                                 <span class="hljs-built_in">&amp;</span> Minimizing the fuel cost for a specific period of operation.                                                                                                               <span class="hljs-built_in">&amp;</span> Economics           <span class="hljs-keyword">\\</span><br><span class="hljs-built_in">$</span>F<span class="hljs-built_in">_</span>&#123;11.4&#125;<span class="hljs-built_in">$</span>  <span class="hljs-built_in">&amp;</span> 13                                                                                                <span class="hljs-built_in">&amp;</span> Minimizing the fuel cost for a specific period of operation.                                                                                                               <span class="hljs-built_in">&amp;</span> Economics           <span class="hljs-keyword">\\</span><br><span class="hljs-built_in">$</span>F<span class="hljs-built_in">_</span>&#123;11.5&#125;<span class="hljs-built_in">$</span>  <span class="hljs-built_in">&amp;</span> 15                                                                                                <span class="hljs-built_in">&amp;</span> Minimizing the fuel cost for a specific period of operation.                                                                                                               <span class="hljs-built_in">&amp;</span> Economics           <span class="hljs-keyword">\\</span><br><span class="hljs-built_in">$</span>F<span class="hljs-built_in">_</span>&#123;11.6&#125;<span class="hljs-built_in">$</span>  <span class="hljs-built_in">&amp;</span> 40                                                                                                <span class="hljs-built_in">&amp;</span> Minimizing the fuel cost for a specific period of operation.                                                                                                               <span class="hljs-built_in">&amp;</span> Economics           <span class="hljs-keyword">\\</span><br><span class="hljs-built_in">$</span>F<span class="hljs-built_in">_</span>&#123;11.7&#125;<span class="hljs-built_in">$</span>  <span class="hljs-built_in">&amp;</span> 140                                                                                               <span class="hljs-built_in">&amp;</span>                                                                                                                                                                            <span class="hljs-built_in">&amp;</span> Economics           <span class="hljs-keyword">\\</span><br><span class="hljs-built_in">$</span>F<span class="hljs-built_in">_</span>&#123;11.8&#125;<span class="hljs-built_in">$</span>  <span class="hljs-built_in">&amp;</span> 96                                                                                                <span class="hljs-built_in">&amp;</span> <span class="hljs-keyword">\begin</span>&#123;tabular&#125;[c]&#123;@&#123;&#125;c@&#123;&#125;&#125;Minimizing the total fuel cost for operation of <span class="hljs-keyword">\\</span> the thermal system in the scheduling period.<span class="hljs-keyword">\end</span>&#123;tabular&#125;                                    <span class="hljs-built_in">&amp;</span> Resource scheduling <span class="hljs-keyword">\\</span><br><span class="hljs-built_in">$</span>F<span class="hljs-built_in">_</span>&#123;11.9&#125;<span class="hljs-built_in">$</span>  <span class="hljs-built_in">&amp;</span> 96                                                                                                <span class="hljs-built_in">&amp;</span> <span class="hljs-keyword">\begin</span>&#123;tabular&#125;[c]&#123;@&#123;&#125;c@&#123;&#125;&#125;Minimizing the total fuel cost for operation of <span class="hljs-keyword">\\</span> the thermal system in the scheduling period.<span class="hljs-keyword">\end</span>&#123;tabular&#125;                                    <span class="hljs-built_in">&amp;</span> Resource scheduling <span class="hljs-keyword">\\</span><br><span class="hljs-built_in">$</span>F<span class="hljs-built_in">_</span>&#123;11.10&#125;<span class="hljs-built_in">$</span> <span class="hljs-built_in">&amp;</span> 96                                                                                                <span class="hljs-built_in">&amp;</span> <span class="hljs-keyword">\begin</span>&#123;tabular&#125;[c]&#123;@&#123;&#125;c@&#123;&#125;&#125;Minimizing the total fuel cost for operation of <span class="hljs-keyword">\\</span> the thermal system in the scheduling period.<span class="hljs-keyword">\end</span>&#123;tabular&#125;                                    <span class="hljs-built_in">&amp;</span> Resource scheduling <span class="hljs-keyword">\\</span><br><span class="hljs-built_in">$</span>F<span class="hljs-built_in">_</span>&#123;12&#125;<span class="hljs-built_in">$</span>    <span class="hljs-built_in">&amp;</span> 26                                                                                                <span class="hljs-built_in">&amp;</span> <span class="hljs-keyword">\begin</span>&#123;tabular&#125;[c]&#123;@&#123;&#125;c@&#123;&#125;&#125;Minimizing the propellant required or equivalently to maximize <span class="hljs-keyword">\\</span> the fraction of the spacecraft that is not devoted to propellant<span class="hljs-keyword">\end</span>&#123;tabular&#125; <span class="hljs-built_in">&amp;</span> Astronomy           <span class="hljs-keyword">\\</span><br><span class="hljs-built_in">$</span>F<span class="hljs-built_in">_</span>&#123;13&#125;<span class="hljs-built_in">$</span>    <span class="hljs-built_in">&amp;</span> 22                                                                                                <span class="hljs-built_in">&amp;</span> <span class="hljs-keyword">\begin</span>&#123;tabular&#125;[c]&#123;@&#123;&#125;c@&#123;&#125;&#125;Minimizing the propellant required or equivalently to <span class="hljs-keyword">\\</span> maximize the fraction of the spacecraft that is not devoted to propellant<span class="hljs-keyword">\end</span>&#123;tabular&#125; <span class="hljs-built_in">&amp;</span> Astronomy           <span class="hljs-keyword">\\</span> <span class="hljs-keyword">\bottomrule</span><br><span class="hljs-keyword">\end</span>&#123;tabular&#125;<br><span class="hljs-keyword">\label</span>&#123;tb:cec2011Problems&#125;<br><span class="hljs-keyword">\end</span>&#123;sidewaystable&#125;<br></code></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<p><img src="media/image-20210513101239227.png" alt="image-20210513101239227"></p>
+<h2 id="图和子图"><a href="#图和子图" class="headerlink" title="图和子图"></a>图和子图</h2><h3 id="图"><a href="#图" class="headerlink" title="图"></a>图</h3><p>图使用 <code>figure</code> 环境，如：</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-keyword">\begin</span>&#123;figure&#125;[htbp]<br><span class="hljs-keyword">\centering</span><span class="hljs-keyword">\includegraphics</span>[width=0.8<span class="hljs-keyword">\linewidth</span>]&#123;img/f16.pdf&#125;<br><span class="hljs-keyword">\caption</span>&#123;The 2-dimensional fitness landscape of <span class="hljs-built_in">$</span>F<span class="hljs-built_in">_</span>&#123;16&#125;<span class="hljs-built_in">$</span>&#125;<br><span class="hljs-keyword">\label</span>&#123;fig:3DplotCECF16&#125;<br><span class="hljs-keyword">\end</span>&#123;figure&#125;<br></code></pre></td></tr></table></figure>
+
+<p><code>htbp</code> 表示图片的定位信息，htbp 分别表示的是 here, top, bottom, page，即当前、页面顶部、页面底部和单独一页。排版时，会根据图片的情况进行自动匹配，优先当前位置，然后页面顶部，然后页面底部，然后单独一页。</p>
+<p><code>\includegraphics</code> 用于引入图片，需要指定图片路径，可以指定图片大小。</p>
+<blockquote>
+<p>  图片推荐矢量图，常用的为 <code>.eps</code> 图片。</p>
+</blockquote>
+<p><code>\caption</code>  指定图片标题。</p>
+<p><code>\label</code> 用于交叉引用，使用 <code>\ref&#123;&#125;</code> 进行引用，例如：</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs latex">Taking function <span class="hljs-built_in">$</span>F<span class="hljs-built_in">_</span>&#123;16&#125;<span class="hljs-built_in">$</span> as an example, whose 3D plot is shown in Figure <span class="hljs-keyword">\ref</span>&#123;fig:3DplotCECF16&#125;.<br></code></pre></td></tr></table></figure>
+
+<p><img src="media/image-20210513101213525.png" alt="image-20210513101213525"></p>
+<h3 id="子图"><a href="#子图" class="headerlink" title="子图"></a>子图</h3><p>在论文中经常有子图排版的需求，例如：</p>
+<p><img src="media/image-20210513101201908.png" alt="image-20210513101201908"></p>
+<p>引入宏包 <code>\usepackage&#123;subfigure&#125;</code></p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-keyword">\begin</span>&#123;figure&#125;[htbp]<br><span class="hljs-keyword">\centering</span><br><span class="hljs-keyword">\subfigure</span>[Initial particle distribution]&#123;<br>    <span class="hljs-keyword">\includegraphics</span>[width=0.45<span class="hljs-keyword">\linewidth</span>]&#123;img/particle<span class="hljs-built_in">_</span>distribution<span class="hljs-built_in">_</span>SGSA<span class="hljs-built_in">_</span>F16<span class="hljs-built_in">_</span>1.eps&#125;<br>    <span class="hljs-keyword">\label</span>&#123;subfig:F16ParticlesDistribution1&#125;<br>&#125;<br><span class="hljs-keyword">\quad</span><br><span class="hljs-keyword">\subfigure</span>[The distribution of particles after iteration 16]&#123;<br>    <span class="hljs-keyword">\includegraphics</span>[width=0.45<span class="hljs-keyword">\linewidth</span>]&#123;img/particle<span class="hljs-built_in">_</span>distribution<span class="hljs-built_in">_</span>SGSA<span class="hljs-built_in">_</span>F16<span class="hljs-built_in">_</span>16.eps&#125;<br>    <span class="hljs-keyword">\label</span>&#123;subfig:F16ParticlesDistribution16&#125;<br>&#125;<br><span class="hljs-keyword">\quad</span><br><span class="hljs-keyword">\subfigure</span>[The distribution of particles after iteration 100]&#123;<br>    <span class="hljs-keyword">\includegraphics</span>[width=0.45<span class="hljs-keyword">\linewidth</span>]&#123;img/particle<span class="hljs-built_in">_</span>distribution<span class="hljs-built_in">_</span>SGSA<span class="hljs-built_in">_</span>F16<span class="hljs-built_in">_</span>100.eps&#125;<br>    <span class="hljs-keyword">\label</span>&#123;subfig:F16ParticlesDistribution100&#125;<br>&#125;<br><span class="hljs-keyword">\quad</span><br><span class="hljs-keyword">\subfigure</span>[The distribution of particles after iteration 1000]&#123;<br>    <span class="hljs-keyword">\includegraphics</span>[width=0.45<span class="hljs-keyword">\linewidth</span>]&#123;img/particle<span class="hljs-built_in">_</span>distribution<span class="hljs-built_in">_</span>SGSA<span class="hljs-built_in">_</span>F16<span class="hljs-built_in">_</span>1000.eps&#125;<br>    <span class="hljs-keyword">\label</span>&#123;subfig:F16ParticlesDistribution1000&#125;<br>&#125;<br><span class="hljs-keyword">\caption</span>&#123;Particle distribution and movement&#125;<br><span class="hljs-keyword">\label</span>&#123;fig:F16particlesdistribution&#125;<br><span class="hljs-keyword">\end</span>&#123;figure&#125;<br></code></pre></td></tr></table></figure>
+
+<p>子图使用也比较简单，需要注意的就是子图的引用，使用 <code>\ref</code> 和 <code>\subref</code>。</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs latex">Figure <span class="hljs-keyword">\ref</span>&#123;fig:F16particlesdistribution&#125;<span class="hljs-keyword">\subref</span>&#123;subfig:F16ParticlesDistribution1&#125; shows the initial particle distribution.<br></code></pre></td></tr></table></figure>
+
+<h2 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h2><p>$\LaTeX$ 公式非常实用，应用非常广泛，建议都学并熟练掌握。</p>
+<h3 id="LaTeX-公式环境"><a href="#LaTeX-公式环境" class="headerlink" title="$\LaTeX$ 公式环境"></a>$\LaTeX$ 公式环境</h3><h4 id="行内公式"><a href="#行内公式" class="headerlink" title="行内公式"></a>行内公式</h4><p>$$ 表示行内公式</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs latex">Add <span class="hljs-built_in">$</span>a<span class="hljs-built_in">$</span> squared and <span class="hljs-built_in">$</span>b<span class="hljs-built_in">$</span> squared to get <span class="hljs-built_in">$</span>c<span class="hljs-built_in">$</span> squared. Or, using a more mathematical approach: <span class="hljs-built_in">$</span>a<span class="hljs-built_in">^</span>2 + b<span class="hljs-built_in">^</span>2 = c<span class="hljs-built_in">^</span>2<span class="hljs-built_in">$</span>.<br></code></pre></td></tr></table></figure>
+
+<p>Add $a$ squared and $b$ squared to get $c$ squared. Or, using a more mathematical approach: $a^2 + b^2 = c^2$.</p>
+<h4 id="行间公式（单行公式）"><a href="#行间公式（单行公式）" class="headerlink" title="行间公式（单行公式）"></a>行间公式（单行公式）</h4><p>使用 <code>equation</code> 环境创建行间公式。</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-keyword">\begin</span>&#123;equation&#125;<br><span class="hljs-keyword">\label</span>&#123;clever&#125;<br>E = mc<span class="hljs-built_in">^</span>2<br><span class="hljs-keyword">\end</span>&#123;equation&#125;<br></code></pre></td></tr></table></figure>
+
+<p>$$<br>E = mc^2<br>$$</p>
+<p>行间公式会自动进行编号，并且可以使用 <code>\label</code> 添加交叉引用。</p>
+<h3 id="常用符号参考"><a href="#常用符号参考" class="headerlink" title="常用符号参考"></a>常用符号参考</h3><h4 id="上下标"><a href="#上下标" class="headerlink" title="上下标"></a>上下标</h4><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-comment">% 上标</span><br><span class="hljs-built_in">$</span>a<span class="hljs-built_in">^</span>2<span class="hljs-built_in">$</span>, <span class="hljs-built_in">$</span>x<span class="hljs-built_in">^</span>&#123;a + 1&#125;<span class="hljs-built_in">$</span><br><span class="hljs-comment">% 下标</span><br><span class="hljs-built_in">$</span>a<span class="hljs-built_in">_</span>2<span class="hljs-built_in">$</span>, <span class="hljs-built_in">$</span>a<span class="hljs-built_in">_</span>&#123;b<span class="hljs-built_in">_</span>2&#125;<span class="hljs-built_in">$</span><br></code></pre></td></tr></table></figure>
+
+<p>$a^2$, $x^{a + 1}$</p>
+<p>$a_2$, $a_{b_2}$</p>
+<h4 id="分数"><a href="#分数" class="headerlink" title="分数"></a>分数</h4><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-built_in">$</span><span class="hljs-keyword">\frac</span>&#123;1&#125;&#123;a + b&#125;<span class="hljs-built_in">$</span><br><br><span class="hljs-keyword">\begin</span>&#123;equation&#125;<br><span class="hljs-keyword">\frac</span>&#123;1&#125;&#123;a + b&#125;<br><span class="hljs-keyword">\end</span>&#123;equation&#125;<br></code></pre></td></tr></table></figure>
+
+<p>$\frac{1}{a + b}$</p>
+<p>$$<br>\frac{1}{a + b}<br>$$</p>
+<h4 id="根号"><a href="#根号" class="headerlink" title="根号"></a>根号</h4><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-built_in">$</span><span class="hljs-keyword">\sqrt</span>&#123;x&#125;<span class="hljs-built_in">$</span>, <span class="hljs-built_in">$</span><span class="hljs-keyword">\sqrt</span>[3]&#123;x&#125;<span class="hljs-built_in">$</span><br></code></pre></td></tr></table></figure>
+
+<p>$\sqrt{x}$, $\sqrt[3]{x}$</p>
+<h4 id="求和、求积"><a href="#求和、求积" class="headerlink" title="求和、求积"></a>求和、求积</h4><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-comment">% 求和</span><br><span class="hljs-keyword">\begin</span>&#123;equation&#125;<br><span class="hljs-keyword">\sum</span><span class="hljs-built_in">_</span>&#123;x=1&#125;<span class="hljs-built_in">^</span>N &#123;x<span class="hljs-built_in">^</span>2&#125;<br><span class="hljs-keyword">\end</span>&#123;equation&#125;<br><br><span class="hljs-comment">% 求积</span><br><span class="hljs-keyword">\begin</span>&#123;equation&#125;<br><span class="hljs-keyword">\prod</span><span class="hljs-built_in">_</span>&#123;i=1&#125;<span class="hljs-built_in">^</span>n x<span class="hljs-built_in">_</span>i<br><span class="hljs-keyword">\end</span>&#123;equation&#125;<br></code></pre></td></tr></table></figure>
+
+<p>$$<br>\sum_{x=1}^N {x^2}<br>$$</p>
+<p>$$<br>\prod_{i=1}^n x_i<br>$$</p>
+<h4 id="大于、小于、等于、不等于"><a href="#大于、小于、等于、不等于" class="headerlink" title="大于、小于、等于、不等于"></a>大于、小于、等于、不等于</h4><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-keyword">\begin</span>&#123;equation&#125;<br>x = y <span class="hljs-keyword">\\</span><br>x <span class="hljs-keyword">\ne</span> y <span class="hljs-keyword">\\</span><br>x &lt; y <span class="hljs-keyword">\\</span><br>x <span class="hljs-keyword">\le</span> y <span class="hljs-keyword">\\</span><br>x <span class="hljs-keyword">\ge</span> y <span class="hljs-keyword">\\</span><br>x <span class="hljs-keyword">\approx</span> y <span class="hljs-keyword">\\</span><br>x <span class="hljs-keyword">\equiv</span> y <span class="hljs-keyword">\\</span><br>x <span class="hljs-keyword">\sim</span> y <span class="hljs-keyword">\\</span><br>x <span class="hljs-keyword">\propto</span> y<br><span class="hljs-keyword">\end</span>&#123;equation&#125;<br></code></pre></td></tr></table></figure>
+
+
+<p>$$<br>x = y \<br>x \ne y \<br>x &lt; y \<br>x \le y \<br>x \ge y \<br>x \approx y \<br>x \equiv y \<br>x \sim y \<br>x \propto y<br>$$</p>
+<h4 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h4><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-keyword">\begin</span>&#123;equation&#125;<br>M <span class="hljs-keyword">\times</span> N <span class="hljs-keyword">\\</span><br>a <span class="hljs-keyword">\div</span> b <span class="hljs-keyword">\\</span><br>a <span class="hljs-keyword">\cdot</span> b <span class="hljs-keyword">\\</span><br>a <span class="hljs-keyword">\pm</span> b <span class="hljs-keyword">\\</span><br>a <span class="hljs-keyword">\mp</span> b <span class="hljs-keyword">\\</span><br><span class="hljs-keyword">\end</span>&#123;equation&#125;<br></code></pre></td></tr></table></figure>
+
+
+<p>$$<br>M \times N \<br>a \div b \<br>a \cdot b \<br>a \pm b \<br>a \mp b \<br>$$</p>
+<h4 id="积分"><a href="#积分" class="headerlink" title="积分"></a>积分</h4><p>$$<br>\int_0^{\frac{\pi}{2}}xdx \<br>\oint_0^{\frac{\pi}{2}}xdx \<br>$$</p>
+<h4 id="数学重音"><a href="#数学重音" class="headerlink" title="数学重音"></a>数学重音</h4><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-keyword">\bar</span>&#123;x&#125; <span class="hljs-keyword">\\</span><br><span class="hljs-keyword">\vec</span>&#123;x&#125; <span class="hljs-keyword">\\</span><br><span class="hljs-keyword">\hat</span>&#123;x&#125; <span class="hljs-keyword">\\</span><br><span class="hljs-keyword">\overline</span>&#123;xy&#125; <span class="hljs-keyword">\\</span><br><span class="hljs-keyword">\underline</span>&#123;xy&#125; <span class="hljs-keyword">\\</span><br><span class="hljs-keyword">\widehat</span>&#123;xy&#125; <span class="hljs-keyword">\\</span><br><span class="hljs-keyword">\overrightarrow</span>&#123;xy&#125; <span class="hljs-keyword">\\</span><br><span class="hljs-keyword">\underbrace</span>&#123;<span class="hljs-keyword">\overbrace</span>&#123;a+b+c&#125;<span class="hljs-built_in">^</span>6<br><span class="hljs-keyword">\cdot</span> <span class="hljs-keyword">\overbrace</span>&#123;d+e+f&#125;<span class="hljs-built_in">^</span>7&#125;<br><span class="hljs-built_in">_</span><span class="hljs-keyword">\text</span>&#123;meaning of life&#125; = 42<br></code></pre></td></tr></table></figure>
+
+
+<p>$$<br>\bar{x} \<br>\vec{x} \<br>\hat{x} \<br>\overline{xy} \<br>\underline{xy} \<br>\widehat{xy} \<br>\overrightarrow{xy} \<br>\underbrace{\overbrace{a+b+c}^6<br>\cdot \overbrace{d+e+f}^7}<br>_\text{meaning of life} = 42<br>$$</p>
+<h4 id="括号和定界符"><a href="#括号和定界符" class="headerlink" title="括号和定界符"></a>括号和定界符</h4><p>大一点的括号：<code>\left</code> 和 <code>\right</code>。</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-keyword">\left</span>(<br><span class="hljs-keyword">\frac</span>&#123;1&#125;&#123;1 - x<span class="hljs-built_in">^</span>2&#125;<br><span class="hljs-keyword">\right</span>)<span class="hljs-built_in">^</span>3<br></code></pre></td></tr></table></figure>
+
+
+<p>$$<br>\left(<br>\frac{1}{1 - x^2}<br>\right)^3<br>$$</p>
+<h4 id="极限"><a href="#极限" class="headerlink" title="极限"></a>极限</h4><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs latex"><span class="hljs-keyword">\lim</span><span class="hljs-built_in">_</span>&#123;x <span class="hljs-keyword">\rightarrow</span> 0&#125;<span class="hljs-keyword">\frac</span>&#123;<span class="hljs-keyword">\sin</span> x&#125;&#123;x&#125; = 1<br></code></pre></td></tr></table></figure>
+
+
+<p>$$<br>\lim_{x \rightarrow 0}\frac{\sin x}{x} = 1<br>$$</p>
+<h4 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h4><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs latex">Q = <span class="hljs-keyword">\begin</span>&#123;pmatrix&#125;<br>Q<span class="hljs-built_in">_</span>1<span class="hljs-built_in">^</span>1 <span class="hljs-built_in">&amp;</span> <span class="hljs-keyword">\cdots</span> <span class="hljs-built_in">&amp;</span> Q<span class="hljs-built_in">_</span>k<span class="hljs-built_in">^</span>1 <span class="hljs-keyword">\\</span><br><span class="hljs-keyword">\vdots</span> <span class="hljs-built_in">&amp;</span> <span class="hljs-keyword">\ddots</span> <span class="hljs-built_in">&amp;</span> <span class="hljs-keyword">\vdots</span> <span class="hljs-keyword">\\</span><br>Q<span class="hljs-built_in">_</span>1<span class="hljs-built_in">^</span>N <span class="hljs-built_in">&amp;</span> <span class="hljs-keyword">\cdots</span> <span class="hljs-built_in">&amp;</span> <span class="hljs-keyword">\Q</span><span class="hljs-built_in">_</span>k<span class="hljs-built_in">^</span>N<br><span class="hljs-keyword">\end</span>&#123;pmatrix&#125;<br></code></pre></td></tr></table></figure>
+
+<p>$$<br>Q = \begin{pmatrix}<br>Q_1^1 &amp; \cdots &amp; Q_k^1 \<br>\vdots &amp; \ddots &amp; \vdots \<br>Q_1^N &amp; \cdots &amp; Q_k^N<br>\end{pmatrix}<br>$$</p>
+<h4 id="多行公式"><a href="#多行公式" class="headerlink" title="多行公式"></a>多行公式</h4><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs latex">y = <span class="hljs-keyword">\left</span><span class="hljs-keyword">\&#123;</span><br><span class="hljs-keyword">\begin</span>&#123;array&#125;&#123;ll&#125;<br>10, <span class="hljs-built_in">&amp;</span>x <span class="hljs-keyword">\le</span> 5 <span class="hljs-keyword">\\</span><br>20, <span class="hljs-built_in">&amp;</span>x &gt; 5<br><span class="hljs-keyword">\end</span>&#123;array&#125;<br><span class="hljs-keyword">\right</span>.<br></code></pre></td></tr></table></figure>
+
+<p>$$<br>y = \left{\begin{array}{ll}10, &amp;x \le 5 \20, &amp;x &gt; 5\end{array}\right.<br>$$</p>
+<h3 id="数学字母字体"><a href="#数学字母字体" class="headerlink" title="数学字母字体"></a>数学字母字体</h3><p><img src="media/image-20210513112810405.png" alt="image-20210513112810405"></p>
+<h3 id="符号表"><a href="#符号表" class="headerlink" title="符号表"></a>符号表</h3><p><img src="media/image-20210513112842798.png" alt="image-20210513112842798"></p>
+<p><img src="media/image-20210513112850210.png" alt="image-20210513112850210"></p>
+<p><img src="media/image-20210513112859821.png" alt="image-20210513112859821"></p>
+<p><img src="media/image-20210513112906326.png" alt="image-20210513112906326"></p>
+<p><img src="media/image-20210513112912088.png" alt="image-20210513112912088"></p>
+<p><img src="media/image-20210513112918643.png" alt="image-20210513112918643"></p>
+<p><img src="media/image-20210513112930670.png" alt="image-20210513112930670"></p>
+<p><img src="media/image-20210513112943853.png" alt="image-20210513112943853"></p>
+<p><img src="media/image-20210513113000731.png" alt="image-20210513113000731"></p>
+<p><img src="media/image-20210513113011591.png" alt="image-20210513113011591"></p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>一般常用的 $\LaTeX$ 参考文献生成工具是 BibTex。</p>
+<p>我一般结合 zotero 进行参考文献管理。</p>
+
+      </section>
+      <section class="extra">
+        
+        <ul class="copyright">
+  
+  <li><strong>本文作者：</strong>Mlya</li>
+  <li><strong>本文链接：</strong><a href="https://blog.mlya.xyz/2021/05/13/Latex-%E9%80%9F%E6%9F%A5/index.html">https://blog.mlya.xyz/2021/05/13/Latex-%E9%80%9F%E6%9F%A5/index.html</a></li>
+  <li><strong>版权声明：</strong>本博客所有文章均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
+      rel="external nofollow" target="_blank"> BY-NC-SA </a>许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+        <section class="donate">
+  <div class="qrcode">
+    <img src="http://cdn.mlya.xyz/WechatIMG965.jpeg">
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex/" rel="tag">Latex</a></li></ul>
+
+        
+<nav class="nav">
+  
+  
+    <a href="/2021/05/13/Latex-%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D/">Latex 基本介绍<i class="iconfont iconright"></i></a>
+  
+</nav>
+
+      </section>
+      
+      <section class="comments">
+  
+  <div class="btn" id="comments-btn">查看评论</div>
+  
+  
+</section>
+      
+    </section>
+  </div>
+</article>
+  </div>
+</main>
+  <footer class="footer">
+  <div class="footer-social">
+    
+    
+    
+    
+    
+    <a href="tencent://message/?Menu=yes&uin=476441969 " target="_blank" onMouseOver="this.style.color= '#12B7F5'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  iconQQ "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://github.com/dcr309duan " target="_blank" onMouseOver="this.style.color= '#24292E'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  icongithub-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="mailto:dcr309duan@gmail.com " target="_blank" onMouseOver="this.style.color='#FF3B00'"
+      onMouseOut="this.style.color=''">
+      <i class="iconfont footer-social-item  iconmail"></i>
+    </a>
+    
+  </div>
+  <div class="footer-copyright"><div><a href="http://www.beian.miit.gov.cn/" rel="external nofollow" target="_blank">京ICP备20017514号</a><div style="width:300px;margin:0 auto; padding:20px 0;"><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802031832" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><p style="float:left;height:20px;line-height:20px;margin:0px 0px 0px 5px; color:#939393;">京公网安备 11010802031832号</p></a></div></div></div>
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  <div class="fab fab-daovoice">
+    <i class="iconfont iconcomment"></i>
+  </div>
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+</body>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i["DaoVoiceObject"] = r;
+    i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    a.charset = "utf-8";
+    m.parentNode.insertBefore(a, m)
+  })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
+    "//widget.daovoice.io/widget/0f81ff2f.js", "daovoice")
+  daovoice('init', {
+    app_id: ""
+  }, {
+    launcher: {
+      disableLauncherIcon: true,
+    },
+  });
+  daovoice('update');
+</script>
+
+
+
+<script>
+  (function () {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</html>
