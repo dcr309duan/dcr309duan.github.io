@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Kotlin 类型进阶 | 开发技术笔记</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Kotlin 类型进阶类的构造器123456&#x2F;&#x2F; 构造器的基本写法class Person constructor(var age: Int, var name: String)&#x2F;&#x2F; 可以省略 constructor 关键字，定义构造器参数的同时，可以同时定义属性，去掉 var 关键字，就只定义参数class Person(var age: Int, var name: String)   构造器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin 类型进阶">
+<meta property="og:url" content="https://blog.mlya.xyz/2021/02/22/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/index.html">
+<meta property="og:site_name" content="开发技术笔记">
+<meta property="og:description" content="Kotlin 类型进阶类的构造器123456&#x2F;&#x2F; 构造器的基本写法class Person constructor(var age: Int, var name: String)&#x2F;&#x2F; 可以省略 constructor 关键字，定义构造器参数的同时，可以同时定义属性，去掉 var 关键字，就只定义参数class Person(var age: Int, var name: String)   构造器">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://cdn.mlya.xyz/mweb/16137931769494.jpg">
+<meta property="og:image" content="http://cdn.mlya.xyz/mweb/16137932527072.jpg">
+<meta property="og:image" content="http://cdn.mlya.xyz/mweb/16139657325845.jpg">
+<meta property="article:published_time" content="2021-02-22T08:27:48.000Z">
+<meta property="article:modified_time" content="2023-05-03T12:47:44.095Z">
+<meta property="article:author" content="Mlya">
+<meta property="article:tag" content="Kotlin">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://cdn.mlya.xyz/mweb/16137931769494.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="开发技术笔记" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">开发技术笔记</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://blog.mlya.xyz"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Kotlin-类型进阶" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/22/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/" class="article-date">
+  <time datetime="2021-02-22T08:27:48.000Z" itemprop="datePublished">2021-02-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Kotlin/">Kotlin</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Kotlin 类型进阶
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Kotlin-类型进阶"><a href="#Kotlin-类型进阶" class="headerlink" title="Kotlin 类型进阶"></a>Kotlin 类型进阶</h1><h2 id="类的构造器"><a href="#类的构造器" class="headerlink" title="类的构造器"></a>类的构造器</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 构造器的基本写法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">constructor</span></span>(<span class="keyword">var</span> age: <span class="built_in">Int</span>, <span class="keyword">var</span> name: </span><br><span class="line">String)</span><br><span class="line"><span class="comment">// 可以省略 constructor 关键字，定义构造器参数的同时，可以同时定义属性，去掉 var 关键字，就只定义参数</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>(<span class="keyword">var</span> age: <span class="built_in">Int</span>, <span class="keyword">var</span> name: </span><br><span class="line">String)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>构造器参数，的可见作用于，构造方法和 init 块</li>
+<li>构造器和构造代码块需要完成所有成员的初始化，除了用 <code>lateinit</code> 关键字修饰的属性</li>
+</ul>
+<span id="more"></span>
+
+<h3 id="继承父类"><a href="#继承父类" class="headerlink" title="继承父类"></a>继承父类</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>(<span class="keyword">var</span> age: <span class="built_in">Int</span>, <span class="keyword">var</span> name: String): Animal()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>继承父类的时候，需要注意，是调用父类的构造器</li>
+</ul>
+<h3 id="副构造器"><a href="#副构造器" class="headerlink" title="副构造器"></a>副构造器</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>(<span class="keyword">var</span> age: <span class="built_in">Int</span>, <span class="keyword">var</span> name: String): Animal() &#123;</span><br><span class="line">    <span class="comment">// 副构造器，必须调用主构造器或者其他调用了主构造器的副构造器</span></span><br><span class="line">    <span class="keyword">constructor</span>(age: <span class="built_in">Int</span>): <span class="keyword">this</span>(age, <span class="string">&quot;unknown&quot;</span>) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>推荐的方式是，主构造器+默认参数的方式，如果需要兼容 Java 调用，可以采用如下方式：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span></span><br><span class="line"><span class="comment">// 将默认参数展开成函数重载</span></span><br><span class="line"><span class="meta">@JvmOverloads</span></span><br><span class="line"><span class="keyword">constructor</span>(<span class="keyword">var</span> age: <span class="built_in">Int</span>, <span class="keyword">var</span> name: String = <span class="string">&quot;unknown&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="构造同名的工厂函数"><a href="#构造同名的工厂函数" class="headerlink" title="构造同名的工厂函数"></a>构造同名的工厂函数</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用同名工厂函数进行缓存</span></span><br><span class="line"><span class="keyword">val</span> persons = HashMap&lt;String, Person&gt;()</span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">Person</span><span class="params">(name: <span class="type">String</span>)</span></span>: Person &#123;</span><br><span class="line">    <span class="keyword">return</span> persons[name] ?: Person(<span class="number">1</span>, name).also &#123; persons[name] = it &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="类成员的可见性"><a href="#类成员的可见性" class="headerlink" title="类成员的可见性"></a>类成员的可见性</h2><p><img src="http://cdn.mlya.xyz/mweb/16137931769494.jpg" alt="-w446"></p>
+<p><img src="http://cdn.mlya.xyz/mweb/16137932527072.jpg" alt="-w459"></p>
+<ul>
+<li>模块的概念：IntelliJ IDEA 模块、Maven 工程、Gradle SourceSet、Ant 任务中一次调用 kotlinc 的文件</li>
+<li>直观的讲，可以认为是一个 Jar 包或者一个 aar</li>
+<li>默认 internal 还是可以在 Java 中访问到的，如果想让 Java 访问不到，可以用 <code>@JvmName(&quot;%xxx&quot;)</code> 的方式。</li>
+</ul>
+<h2 id="延迟初始化"><a href="#延迟初始化" class="headerlink" title="延迟初始化"></a>延迟初始化</h2><ul>
+<li>设置为可空</li>
+<li><code>lateinit var</code></li>
+<li><code>lateinit var</code> + <code>::nameView.isInitialized</code></li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (::nameView.isInitialized) &#123;</span><br><span class="line">        nameView = findViewById(R.id.textView)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>lateinit 会让编译器忽略变量的初始化</p>
+</li>
+<li><p>必须清楚生命周期</p>
+</li>
+<li><p>不要在复杂逻辑中使用 lateinit</p>
+</li>
+<li><p>判断是否初始化的 API 也有风险，尽量不要用，还不如使用可空类型，将问题暴露出来</p>
+</li>
+<li><p>lazy 方法: 只有在属性第一次访问到的时候才执行初始化。</p>
+</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">val</span> nameView <span class="keyword">by</span> lazy &#123;</span><br><span class="line">    findViewById&lt;TextView&gt;(R.id.nameView)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="代理-Delegate"><a href="#代理-Delegate" class="headerlink" title="代理 Delegate"></a>代理 Delegate</h2><ul>
+<li>代理：我代替你处理它，三个核心要素就是我、你、它</li>
+<li>接口代理：对象 X 代替当前类 A 实现接口B的方法</li>
+<li>属性代理：对象 X 代替属性 a 实现 getter/setter 方法</li>
+</ul>
+<h3 id="接口代理"><a href="#接口代理" class="headerlink" title="接口代理"></a>接口代理</h3><p>接口：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Api</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">a</span><span class="params">()</span></span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">b</span><span class="params">()</span></span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">c</span><span class="params">()</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接口的一个实现</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ApiImpl</span>: <span class="type">Api &#123;</span></span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">a</span><span class="params">()</span></span> &#123;&#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">b</span><span class="params">()</span></span> &#123;&#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">c</span><span class="params">()</span></span> &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Api Wrapper，假设这里我们只是想给 c 增加一个输出，我们必须也把 a 和 b 的实现进行一次调用。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ApiWrapper</span></span>(<span class="keyword">val</span> api: Api): Api &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">a</span><span class="params">()</span></span> &#123;api.a()&#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">b</span><span class="params">()</span></span> &#123;api.b()&#125;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">c</span><span class="params">()</span></span> &#123;</span><br><span class="line">        println(<span class="string">&quot;c is called&quot;</span>)</span><br><span class="line">        api.c()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用接口代理，指定一个对象 <code>api</code>，让它来代理实现 Api 中的方法，<code>api</code> 的唯一要求就是实现被代理的接口。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ApiWrapper</span></span>(<span class="keyword">val</span> api: Api): Api <span class="keyword">by</span> api &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">c</span><span class="params">()</span></span> &#123;</span><br><span class="line">        println(<span class="string">&quot;c is called&quot;</span>)</span><br><span class="line">        api.c()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="属性代理"><a href="#属性代理" class="headerlink" title="属性代理"></a>属性代理</h3><h4 id="lazy"><a href="#lazy" class="headerlink" title="lazy"></a>lazy</h4><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>(<span class="keyword">val</span> name: String) &#123;</span><br><span class="line">    <span class="keyword">val</span> firstName <span class="keyword">by</span> lazy &#123; name.split(<span class="string">&quot; &quot;</span>)[<span class="number">0</span>] &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>lazy 本身是一个函数，其返回类型为 <code>Lazy&lt;T&gt;</code>, Lazy 接口的定义如下</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Lazy</span>&lt;<span class="type">out T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Gets the lazily initialized value of the current Lazy instance.</span></span><br><span class="line"><span class="comment">     * Once the value was initialized it must not change during the rest of lifetime of this Lazy instance.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">val</span> value: T</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Returns `true` if a value for this Lazy instance has been already initialized, and `false` otherwise.</span></span><br><span class="line"><span class="comment">     * Once this function has returned `true` it stays `true` for the rest of lifetime of this Lazy instance.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">fun</span> <span class="title">isInitialized</span><span class="params">()</span></span>: <span class="built_in">Boolean</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>lazy 方法接收一个 <code>initializer</code> 作为初始化函数，<code>initializer</code> 方法会返回 T 类型的对象。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">actual</span> <span class="function"><span class="keyword">fun</span> <span class="type">&lt;T&gt;</span> <span class="title">lazy</span><span class="params">(initializer: () -&gt; <span class="type">T</span>)</span></span>: Lazy&lt;T&gt; = SynchronizedLazyImpl(initializer)</span><br></pre></td></tr></table></figure>
+
+<p><code>SynchronizedLazyImpl</code> 完成了线程安全的延迟初始化操作，具体代码如下：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">SynchronizedLazyImpl</span>&lt;<span class="type">out T</span>&gt;</span>(initializer: () -&gt; T, lock: Any? = <span class="literal">null</span>) : Lazy&lt;T&gt;, Serializable &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> initializer: (() -&gt; T)? = initializer</span><br><span class="line">    <span class="meta">@Volatile</span> <span class="keyword">private</span> <span class="keyword">var</span> _value: Any? = UNINITIALIZED_VALUE</span><br><span class="line">    <span class="comment">// final field is required to enable safe publication of constructed instance</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> lock = lock ?: <span class="keyword">this</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="keyword">val</span> value: T</span><br><span class="line">        <span class="keyword">get</span>() &#123;</span><br><span class="line">            <span class="keyword">val</span> _v1 = _value</span><br><span class="line">            <span class="keyword">if</span> (_v1 !== UNINITIALIZED_VALUE) &#123;</span><br><span class="line">                <span class="meta">@Suppress(<span class="meta-string">&quot;UNCHECKED_CAST&quot;</span>)</span></span><br><span class="line">                <span class="keyword">return</span> _v1 <span class="keyword">as</span> T</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> synchronized(lock) &#123;</span><br><span class="line">                <span class="keyword">val</span> _v2 = _value</span><br><span class="line">                <span class="keyword">if</span> (_v2 !== UNINITIALIZED_VALUE) &#123;</span><br><span class="line">                    <span class="meta">@Suppress(<span class="meta-string">&quot;UNCHECKED_CAST&quot;</span>)</span> (_v2 <span class="keyword">as</span> T)</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">val</span> typedValue = initializer!!()</span><br><span class="line">                    _value = typedValue</span><br><span class="line">                    initializer = <span class="literal">null</span></span><br><span class="line">                    typedValue</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">isInitialized</span><span class="params">()</span></span>: <span class="built_in">Boolean</span> = _value !== UNINITIALIZED_VALUE</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">toString</span><span class="params">()</span></span>: String = <span class="keyword">if</span> (isInitialized()) value.toString() <span class="keyword">else</span> <span class="string">&quot;Lazy value not initialized yet.&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">writeReplace</span><span class="params">()</span></span>: Any = InitializedLazyImpl(value)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Observable"><a href="#Observable" class="headerlink" title="Observable"></a>Observable</h4><p>Observable 代理了 setter 方法，</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StateManager</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> state: <span class="built_in">Int</span> <span class="keyword">by</span> Delegates.observalbe(<span class="number">0</span>) &#123;</span><br><span class="line">        property, oldValue, newValue -&gt;</span><br><span class="line">        println(<span class="string">&quot;State changed from <span class="variable">$oldValue</span> -&gt; <span class="variable">$newValue</span>&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="vetoable"><a href="#vetoable" class="headerlink" title="vetoable"></a>vetoable</h4><h3 id="object-单例"><a href="#object-单例" class="headerlink" title="object 单例"></a>object 单例</h3><p>object 单例是一个饿汉式的单例。</p>
+<p>Kotlin 本身没有静态，可以使用注解 <code>@JvmStatic</code> 来生成在 Java 上的静态，但是对于 Kotlin 没有区别。</p>
+<p>Kotlin 可以使用 <code>@JvmField</code> 来避免生成 getter setter。</p>
+<p>普通类的静态成员，在普通类中，使用 <code>companion object</code> 来生成，也可以使用 <code>@JvmStatic</code> 来生成 Java 静态对象。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 生成不带 getter/setter 的成员</span></span><br><span class="line">    <span class="meta">@JvmField</span> <span class="keyword">var</span> y: <span class="built_in">Int</span> = <span class="number">3</span></span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span> &#123;</span><br><span class="line">        <span class="comment">// 生成静态的，不带 getter/setter 的成员</span></span><br><span class="line">        <span class="meta">@JvmField</span> <span class="keyword">var</span> x: <span class="built_in">Int</span> = <span class="number">2</span></span><br><span class="line">        <span class="comment">// 生成静态的，带 getter/setter 的成员</span></span><br><span class="line">        <span class="keyword">var</span> z: <span class="built_in">Int</span> = <span class="number">4</span></span><br><span class="line">        <span class="comment">// 生成静态方法</span></span><br><span class="line">        <span class="meta">@JvmStatic</span> <span class="function"><span class="keyword">fun</span> <span class="title">y</span><span class="params">()</span></span> = <span class="number">3</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h3><p>在 Kotlin 中，需要使用关键字 <code>innter</code> 来定义内部类。</p>
+<p>如果不显式使用 <code>inner</code> 关键字，其实定义的是静态内部类。</p>
+<h4 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h4><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">object</span>: Runnable &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">run</span><span class="params">()</span></span> &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在 kotlin 中，匿名内部类也可以实现多个接口，实现了多个接口的匿名内部类是交叉类型。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">object</span>: Cloneable, Runnable &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">run</span><span class="params">()</span></span> &#123;</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据类-data-class"><a href="#数据类-data-class" class="headerlink" title="数据类 data class"></a>数据类 data class</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">Book</span></span>(<span class="keyword">val</span> id: <span class="built_in">Long</span>, <span class="keyword">val</span> name: String, <span class="keyword">val</span> author: Person)</span><br></pre></td></tr></table></figure>
+
+<p>数据类解构</p>
+<p>pair 的解构如下：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> pair = <span class="string">&quot;Hello&quot;</span> to <span class="string">&quot;World&quot;</span></span><br><span class="line"><span class="keyword">val</span> (hello, world) = pair</span><br></pre></td></tr></table></figure>
+
+<p>类似的数据类的解构：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> (id, name, author) = book</span><br></pre></td></tr></table></figure>
+
+<p>data 类，自动生成了：</p>
+<ul>
+<li>getter/setter</li>
+<li>component 方法，用于解构</li>
+<li>copy 方法，浅拷贝</li>
+<li>toString</li>
+<li>hashCode</li>
+<li>equals</li>
+</ul>
+<blockquote>
+<p>注意，数据类不能被继承，从 1.1 开始，可以继承别的类<br>为什么不能被继承呢？<br>component 不同的话，在比较 equals 的时候，不满足对称性，不满足传递性</p>
+</blockquote>
+<p><img src="http://cdn.mlya.xyz/mweb/16139657325845.jpg" alt="-w478"></p>
+<h4 id="如何合理使用-data-class"><a href="#如何合理使用-data-class" class="headerlink" title="如何合理使用 data class"></a>如何合理使用 data class</h4><ul>
+<li>一般不需要额外的实现，就当成数据结构来使用</li>
+<li>属性类型最好为基本类型，或者其他 data class</li>
+<li>component 不可以自定义 getter setter</li>
+<li>成员最好不可变</li>
+</ul>
+<h4 id="NoArg-插件"><a href="#NoArg-插件" class="headerlink" title="NoArg 插件"></a>NoArg 插件</h4><h4 id="AllOpen-插件"><a href="#AllOpen-插件" class="headerlink" title="AllOpen 插件"></a>AllOpen 插件</h4><h3 id="枚举类"><a href="#枚举类" class="headerlink" title="枚举类"></a>枚举类</h3><p>Kotlin 中枚举使用 <code>enum class</code> 来定义</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="class"><span class="keyword">class</span> <span class="title">State</span></span>(<span class="keyword">val</span> id: <span class="built_in">Int</span>): Runnable &#123;</span><br><span class="line">    Idle(<span class="number">0</span>), Busy(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">run</span><span class="params">()</span></span> &#123;</span><br><span class="line">        println(<span class="string">&quot;For every state.&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Kotlin 中可以给枚举定义扩展:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> State.<span class="title">next</span><span class="params">()</span></span>: State &#123;</span><br><span class="line">    <span class="keyword">return</span> State.values().let &#123;</span><br><span class="line">        <span class="keyword">val</span> nextOrdinal = (ordinal + <span class="number">1</span>) % it.size</span><br><span class="line">        it[nextOrdinal]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因为枚举的实例个数是有限的，所以可以用在分支表达式中，不需要 else 分支</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> value = <span class="keyword">when</span> (state) &#123;</span><br><span class="line">    State.Idle -&gt; <span class="number">0</span></span><br><span class="line">    State.Busy -&gt; <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>枚举可以比较大小、区间运算。</p>
+<h3 id="密封类-sealed-class"><a href="#密封类-sealed-class" class="headerlink" title="密封类 sealed class"></a>密封类 sealed class</h3><ul>
+<li>密封类是一种特殊的抽象类。</li>
+<li>密封类和其子类必须定义在同一个文件当中。</li>
+<li>对于密封类来说，子类的个数是有限的。</li>
+</ul>
+<h3 id="内联类-inline-class"><a href="#内联类-inline-class" class="headerlink" title="内联类 inline class"></a>内联类 inline class</h3><ul>
+<li>内联类是对某一个类型的包装</li>
+<li>内联类是类似于 Java 装箱类型的一种类型</li>
+<li>编译器会尽可能使用被包装的类型进行优化</li>
+<li>内联类可以实现接口，不能继承类，也不能被继承</li>
+<li>主构造器必须有且仅有一个只读属性</li>
+<li>不能定义有 backing-field 的其他属性</li>
+<li>被包装类型必须不能是反省类型</li>
+<li>内联类不能定义为其他类的内部类</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inline</span> <span class="class"><span class="keyword">class</span> <span class="title">BoxInt</span></span>(<span class="keyword">val</span> value: <span class="built_in">Int</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.mlya.xyz/2021/02/22/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/" data-id="clh7pwfqw000dbl693o0eb302" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/02/24/Kotlin-%E6%B3%9B%E5%9E%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Kotlin 泛型
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/02/19/Kotlin-%E5%87%BD%E6%95%B0%E8%BF%9B%E9%98%B6/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Kotlin 函数进阶</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Compose/">Compose</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IDE-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/">IDE 使用技巧</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kotlin/">Kotlin</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/android/">android</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/android/gradle/">gradle</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Studio/" rel="tag">Android Studio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Compose/" rel="tag">Compose</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/" rel="tag">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gradle/" rel="tag">gradle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9F%B3%E8%A7%86%E9%A2%91/" rel="tag">音视频</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/Android-Studio/" style="font-size: 10px;">Android Studio</a> <a href="/tags/Compose/" style="font-size: 15px;">Compose</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Kotlin/" style="font-size: 20px;">Kotlin</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/gradle/" style="font-size: 10px;">gradle</a> <a href="/tags/%E9%9F%B3%E8%A7%86%E9%A2%91/" style="font-size: 10px;">音视频</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/05/02/gradle-7-x-%E5%A6%82%E4%BD%95%E5%BC%80%E5%8F%91%E4%B8%80%E4%B8%AA%E8%87%AA%E5%AE%9A%E4%B9%89-Plugin/">gradle 7.x 如何开发一个自定义 Plugin</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/23/%E5%AF%B9%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E7%9A%84%E7%90%86%E8%A7%A3/">对动态代理的理解</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/02/Compose-%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/">Compose 快速上手</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/30/Compose-%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/">Compose 底层原理介绍</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/24/Kotlin-%E6%B3%9B%E5%9E%8B/">Kotlin 泛型</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 Mlya<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

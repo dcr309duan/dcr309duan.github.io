@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>开发技术笔记</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="开发技术笔记">
+<meta property="og:url" content="https://blog.mlya.xyz/index.html">
+<meta property="og:site_name" content="开发技术笔记">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Mlya">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="开发技术笔记" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">开发技术笔记</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://blog.mlya.xyz"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-gradle-7-x-如何开发一个自定义-Plugin" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/05/02/gradle-7-x-%E5%A6%82%E4%BD%95%E5%BC%80%E5%8F%91%E4%B8%80%E4%B8%AA%E8%87%AA%E5%AE%9A%E4%B9%89-Plugin/" class="article-date">
+  <time datetime="2022-05-02T09:13:32.000Z" itemprop="datePublished">2022-05-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/android/">android</a>►<a class="article-category-link" href="/categories/android/gradle/">gradle</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/05/02/gradle-7-x-%E5%A6%82%E4%BD%95%E5%BC%80%E5%8F%91%E4%B8%80%E4%B8%AA%E8%87%AA%E5%AE%9A%E4%B9%89-Plugin/">gradle 7.x 如何开发一个自定义 Plugin</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>gradle 7.x 对 gradle 的改动还蛮大的，我们创建新 Plugin 的方式也有变化，这里做一个记录。</p>
+<p><strong>新建一个 Groovy Model</strong></p>
+<p>as 没法直接创建 groovy model，可以先创建一个 java model，然后修改 gradle 配置</p>
+<p><img src="http://cdn.mlya.xyz/mweb/16514819346389.jpg"></p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">    id <span class="string">&#x27;groovy&#x27;</span></span><br><span class="line">    id <span class="string">&#x27;maven-publish&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    implementation gradleApi()</span><br><span class="line">    implementation localGroovy()</span><br><span class="line">    implementation <span class="string">&#x27;com.android.tools.build:gradle:3.5.2&#x27;</span></span><br><span class="line">    implementation <span class="string">&#x27;org.javassist:javassist:3.28.0-GA&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2022/05/02/gradle-7-x-%E5%A6%82%E4%BD%95%E5%BC%80%E5%8F%91%E4%B8%80%E4%B8%AA%E8%87%AA%E5%AE%9A%E4%B9%89-Plugin/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.mlya.xyz/2022/05/02/gradle-7-x-%E5%A6%82%E4%BD%95%E5%BC%80%E5%8F%91%E4%B8%80%E4%B8%AA%E8%87%AA%E5%AE%9A%E4%B9%89-Plugin/" data-id="clh7pwfqy000qbl696sgv6tri" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/" rel="tag">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gradle/" rel="tag">gradle</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-对动态代理的理解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/04/23/%E5%AF%B9%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E7%9A%84%E7%90%86%E8%A7%A3/" class="article-date">
+  <time datetime="2022-04-23T12:32:46.000Z" itemprop="datePublished">2022-04-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/04/23/%E5%AF%B9%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E7%9A%84%E7%90%86%E8%A7%A3/">对动态代理的理解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>动态代理就好像中介公司一样，我们买什么东西，找中介，我们也不关心具体是谁去买的。</p>
+<p>静态代理不一样，我需要明确指定是谁做为中间者。</p>
+<h2 id="动态代理的理解"><a href="#动态代理的理解" class="headerlink" title="动态代理的理解"></a>动态代理的理解</h2><p>动态代理实际上是一种动态注入方法的方法。</p>
+<p>比如 Retrofit，Retrofit 自身不可能知道我们在使用过程中，到底有哪些网络请求。这些网络请求的定义，是使用 retrofit 的人，根据业务需求自己定义的请求方法。</p>
+<p>retrofit 提供了定义这些请求方法的规范，我们可以按照这些规范，做好方法的定义（接口的定义），不需要我们提供这些方法的实现，retrofit 就可以使用动态代理的方式，去实现这些方法。</p>
+<p>动态代理相对于 <strong>定义接口，让开发人员提供具体实现的这种方式</strong> 来说，是一种反向的操作，动态代理提供了方法的实现，由开发人员再去定义所需要的接口。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.mlya.xyz/2022/04/23/%E5%AF%B9%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E7%9A%84%E7%90%86%E8%A7%A3/" data-id="clh7pwfqz000wbl697z6m21g6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Compose-快速上手" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/02/02/Compose-%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/" class="article-date">
+  <time datetime="2022-02-02T08:04:32.000Z" itemprop="datePublished">2022-02-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Compose/">Compose</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/02/02/Compose-%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/">Compose 快速上手</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="用-Compose-写出一个简单界面"><a href="#用-Compose-写出一个简单界面" class="headerlink" title="用 Compose 写出一个简单界面"></a>用 Compose 写出一个简单界面</h1><h2 id="Compose-一些基本概念问题"><a href="#Compose-一些基本概念问题" class="headerlink" title="Compose 一些基本概念问题"></a>Compose 一些基本概念问题</h2><ol>
+<li>Compose 独立于平台<ol>
+<li>不依赖于 android 更新，可以独立发布: ConstraintLayout, AppCompat, ViewModel, RecyclerView 等</li>
+<li>Compose 更激进，独立于 Android，与 Android 无关，可以跨平台</li>
+<li>独立于平台的一个最明显的用处就是在 Android Studio 中可以进行更强大的预览功能</li>
+<li>目前 Compose 支持 PC 已经进入 beta 版、也正在推进 Web 端</li>
+</ol>
+</li>
+<li>声明式 UI<ol>
+<li>只需要对界面进行一次性的声明，而不需要在不同条件下对界面进行操作。</li>
+</ol>
+</li>
+</ol>
+        
+          <p class="article-more-link">
+            <a href="/2022/02/02/Compose-%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.mlya.xyz/2022/02/02/Compose-%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/" data-id="clh7pwfqv0007bl6951hphrgf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Compose/" rel="tag">Compose</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Compose-底层原理介绍" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/01/30/Compose-%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/" class="article-date">
+  <time datetime="2022-01-30T06:00:26.000Z" itemprop="datePublished">2022-01-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Compose/">Compose</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/30/Compose-%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/">Compose 底层原理介绍</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Compose-底层原理介绍"><a href="#Compose-底层原理介绍" class="headerlink" title="Compose 底层原理介绍"></a>Compose 底层原理介绍</h1><p>Compose 是如何通过 <code>setContent&#123;Text(&quot;Hello&quot;)&#125;</code> 将组件显示到界面当中？</p>
+<h2 id="setContent"><a href="#setContent" class="headerlink" title="setContent"></a>setContent</h2><p><code>setContent</code> 将 Compose 环境建立起来了，<code>setContent</code> 提供了各种上下文环境。</p>
+<blockquote>
+<p><code>setContent</code> 是定义于 <code>ComponentActivity</code> 的扩展函数。<br><code>ComponentActivity</code> 是老朋友了，他是 <code>AppCompatActivity</code> 的基类。</p>
+</blockquote>
+<p>因此 <code>setContent</code> 的第一个部分的工作，就是获取 <code>existingComposeView</code></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> existingComposeView = window.decorView</span><br><span class="line">    .findViewById&lt;ViewGroup&gt;(android.R.id.content)</span><br><span class="line">    .getChildAt(<span class="number">0</span>) <span class="keyword">as</span>? ComposeView</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2022/01/30/Compose-%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.mlya.xyz/2022/01/30/Compose-%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/" data-id="clh7pwfqu0003bl691bbacr69" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Compose/" rel="tag">Compose</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Kotlin-泛型" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/24/Kotlin-%E6%B3%9B%E5%9E%8B/" class="article-date">
+  <time datetime="2021-02-24T00:43:47.000Z" itemprop="datePublished">2021-02-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Kotlin/">Kotlin</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/24/Kotlin-%E6%B3%9B%E5%9E%8B/">Kotlin 泛型</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Kotlin-泛型"><a href="#Kotlin-泛型" class="headerlink" title="Kotlin 泛型"></a>Kotlin 泛型</h1><h2 id="泛型的基本概念"><a href="#泛型的基本概念" class="headerlink" title="泛型的基本概念"></a>泛型的基本概念</h2><p>泛型是类型的抽象。</p>
+<h3 id="泛型的基本声明方法"><a href="#泛型的基本声明方法" class="headerlink" title="泛型的基本声明方法"></a>泛型的基本声明方法</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 函数声明泛型</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="type">&lt;T&gt;</span> <span class="title">maxOf</span><span class="params">(a: <span class="type">T</span>, b: <span class="type">T</span>)</span></span>: T</span><br><span class="line"></span><br><span class="line"><span class="comment">// 类型声明泛型</span></span><br><span class="line"><span class="keyword">sealed</span> <span class="class"><span class="keyword">class</span> <span class="title">List</span>&lt;<span class="type">T</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 泛型实参，这里可以利用类型推导，省略 &lt;String&gt;</span></span><br><span class="line"><span class="keyword">val</span> max = maxOf&lt;String&gt;(<span class="string">&quot;Hello, &quot;</span>World<span class="string">&quot;)</span></span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2021/02/24/Kotlin-%E6%B3%9B%E5%9E%8B/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.mlya.xyz/2021/02/24/Kotlin-%E6%B3%9B%E5%9E%8B/" data-id="clh7pwfqy000jbl695ruiegzj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Kotlin-类型进阶" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/22/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/" class="article-date">
+  <time datetime="2021-02-22T08:27:48.000Z" itemprop="datePublished">2021-02-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Kotlin/">Kotlin</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/22/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/">Kotlin 类型进阶</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Kotlin-类型进阶"><a href="#Kotlin-类型进阶" class="headerlink" title="Kotlin 类型进阶"></a>Kotlin 类型进阶</h1><h2 id="类的构造器"><a href="#类的构造器" class="headerlink" title="类的构造器"></a>类的构造器</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 构造器的基本写法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">constructor</span></span>(<span class="keyword">var</span> age: <span class="built_in">Int</span>, <span class="keyword">var</span> name: </span><br><span class="line">String)</span><br><span class="line"><span class="comment">// 可以省略 constructor 关键字，定义构造器参数的同时，可以同时定义属性，去掉 var 关键字，就只定义参数</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>(<span class="keyword">var</span> age: <span class="built_in">Int</span>, <span class="keyword">var</span> name: </span><br><span class="line">String)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>构造器参数，的可见作用于，构造方法和 init 块</li>
+<li>构造器和构造代码块需要完成所有成员的初始化，除了用 <code>lateinit</code> 关键字修饰的属性</li>
+</ul>
+        
+          <p class="article-more-link">
+            <a href="/2021/02/22/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.mlya.xyz/2021/02/22/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/" data-id="clh7pwfqw000dbl693o0eb302" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Kotlin-函数进阶" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/19/Kotlin-%E5%87%BD%E6%95%B0%E8%BF%9B%E9%98%B6/" class="article-date">
+  <time datetime="2021-02-19T15:00:14.000Z" itemprop="datePublished">2021-02-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Kotlin/">Kotlin</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/19/Kotlin-%E5%87%BD%E6%95%B0%E8%BF%9B%E9%98%B6/">Kotlin 函数进阶</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Kotlin-函数进阶"><a href="#Kotlin-函数进阶" class="headerlink" title="Kotlin 函数进阶"></a>Kotlin 函数进阶</h1><h2 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h2><p>高阶函数就是，参数为函数hove返回值为函数的函数，可以理解为函数的函数（类似于数学中函数的高阶的概念）</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inline</span> <span class="function"><span class="keyword">fun</span> IntArray.<span class="title">forEach</span><span class="params">(action: (<span class="type">Int</span>) -&gt; <span class="type">Unit</span>)</span></span>: <span class="built_in">Unit</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (element <span class="keyword">in</span> <span class="keyword">this</span>) action(element)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">inline</span> <span class="function"><span class="keyword">fun</span> <span class="type">&lt;R&gt;</span> IntArray.<span class="title">map</span><span class="params">(transform: (<span class="type">Int</span>) -&gt; <span class="type">R</span>)</span></span>: List&lt;R&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> mapTo(ArrayList&lt;R&gt;(size), transform)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2021/02/19/Kotlin-%E5%87%BD%E6%95%B0%E8%BF%9B%E9%98%B6/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.mlya.xyz/2021/02/19/Kotlin-%E5%87%BD%E6%95%B0%E8%BF%9B%E9%98%B6/" data-id="clh7pwfqw000cbl699vkocdhc" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-IDEA-代码折叠" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/16/IDEA-%E4%BB%A3%E7%A0%81%E6%8A%98%E5%8F%A0/" class="article-date">
+  <time datetime="2021-02-16T14:28:39.000Z" itemprop="datePublished">2021-02-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/IDE-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/">IDE 使用技巧</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/16/IDEA-%E4%BB%A3%E7%A0%81%E6%8A%98%E5%8F%A0/">IDEA 代码折叠</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="IDEA-代码折叠技巧"><a href="#IDEA-代码折叠技巧" class="headerlink" title="IDEA 代码折叠技巧"></a>IDEA 代码折叠技巧</h1><p>在 IDEA 中，可以使用 <code>region</code> 语法对代码块进行折叠，使用方法如下</p>
+<ol>
+<li>对于需要折叠的代码块，使用 <code>// region +description</code> 和 <code>// endregion</code> 进行包裹</li>
+<li>使用 <code>CMD + =</code> 和 <code>CMD + -</code> 进行展开和折叠操作 </li>
+</ol>
+<p><img src="http://cdn.mlya.xyz/mweb/16134856852777.jpg" alt="-w276"></p>
+<p><img src="http://cdn.mlya.xyz/mweb/16134856936859.jpg" alt="-w259"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.mlya.xyz/2021/02/16/IDEA-%E4%BB%A3%E7%A0%81%E6%8A%98%E5%8F%A0/" data-id="clh7pwfqv0008bl69441k3hb4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android-Studio/" rel="tag">Android Studio</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Kotlin-表达式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/16/Kotlin-%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="article-date">
+  <time datetime="2021-02-16T13:20:28.000Z" itemprop="datePublished">2021-02-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Kotlin/">Kotlin</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/16/Kotlin-%E8%A1%A8%E8%BE%BE%E5%BC%8F/">Kotlin 表达式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Kotlin-表达式"><a href="#Kotlin-表达式" class="headerlink" title="Kotlin 表达式"></a>Kotlin 表达式</h1><h2 id="常量和变量"><a href="#常量和变量" class="headerlink" title="常量和变量"></a>常量和变量</h2><ul>
+<li><code>val</code> and <code>var</code></li>
+<li><code>val</code> 只读变量，并不一定每次读到的都是一样的，如果覆写了 <code>get</code> 方法，那么可能每次读到的变量不同</li>
+<li>常量：<code>const val</code>，智能定义在全局范围，智能修饰基本类型，必须立即用字面量初始化，等同于 Java 中的 <code>static final</code></li>
+<li>编译期常量和运行时常量</li>
+</ul>
+        
+          <p class="article-more-link">
+            <a href="/2021/02/16/Kotlin-%E8%A1%A8%E8%BE%BE%E5%BC%8F/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.mlya.xyz/2021/02/16/Kotlin-%E8%A1%A8%E8%BE%BE%E5%BC%8F/" data-id="clh7pwfqy000obl691e422oil" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Compose/">Compose</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IDE-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/">IDE 使用技巧</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kotlin/">Kotlin</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/android/">android</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/android/gradle/">gradle</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Studio/" rel="tag">Android Studio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Compose/" rel="tag">Compose</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/" rel="tag">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gradle/" rel="tag">gradle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9F%B3%E8%A7%86%E9%A2%91/" rel="tag">音视频</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/Android-Studio/" style="font-size: 10px;">Android Studio</a> <a href="/tags/Compose/" style="font-size: 15px;">Compose</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Kotlin/" style="font-size: 20px;">Kotlin</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/gradle/" style="font-size: 10px;">gradle</a> <a href="/tags/%E9%9F%B3%E8%A7%86%E9%A2%91/" style="font-size: 10px;">音视频</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/05/02/gradle-7-x-%E5%A6%82%E4%BD%95%E5%BC%80%E5%8F%91%E4%B8%80%E4%B8%AA%E8%87%AA%E5%AE%9A%E4%B9%89-Plugin/">gradle 7.x 如何开发一个自定义 Plugin</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/23/%E5%AF%B9%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E7%9A%84%E7%90%86%E8%A7%A3/">对动态代理的理解</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/02/Compose-%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/">Compose 快速上手</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/30/Compose-%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/">Compose 底层原理介绍</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/24/Kotlin-%E6%B3%9B%E5%9E%8B/">Kotlin 泛型</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 Mlya<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

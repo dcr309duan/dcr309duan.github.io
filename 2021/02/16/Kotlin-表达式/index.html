@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Kotlin 表达式 | 开发技术笔记</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Kotlin 表达式常量和变量 val and var val 只读变量，并不一定每次读到的都是一样的，如果覆写了 get 方法，那么可能每次读到的变量不同 常量：const val，智能定义在全局范围，智能修饰基本类型，必须立即用字面量初始化，等同于 Java 中的 static final 编译期常量和运行时常量">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin 表达式">
+<meta property="og:url" content="https://blog.mlya.xyz/2021/02/16/Kotlin-%E8%A1%A8%E8%BE%BE%E5%BC%8F/index.html">
+<meta property="og:site_name" content="开发技术笔记">
+<meta property="og:description" content="Kotlin 表达式常量和变量 val and var val 只读变量，并不一定每次读到的都是一样的，如果覆写了 get 方法，那么可能每次读到的变量不同 常量：const val，智能定义在全局范围，智能修饰基本类型，必须立即用字面量初始化，等同于 Java 中的 static final 编译期常量和运行时常量">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-02-16T13:20:28.000Z">
+<meta property="article:modified_time" content="2023-05-03T12:47:44.095Z">
+<meta property="article:author" content="Mlya">
+<meta property="article:tag" content="Kotlin">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="开发技术笔记" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">开发技术笔记</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://blog.mlya.xyz"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Kotlin-表达式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/16/Kotlin-%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="article-date">
+  <time datetime="2021-02-16T13:20:28.000Z" itemprop="datePublished">2021-02-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Kotlin/">Kotlin</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Kotlin 表达式
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Kotlin-表达式"><a href="#Kotlin-表达式" class="headerlink" title="Kotlin 表达式"></a>Kotlin 表达式</h1><h2 id="常量和变量"><a href="#常量和变量" class="headerlink" title="常量和变量"></a>常量和变量</h2><ul>
+<li><code>val</code> and <code>var</code></li>
+<li><code>val</code> 只读变量，并不一定每次读到的都是一样的，如果覆写了 <code>get</code> 方法，那么可能每次读到的变量不同</li>
+<li>常量：<code>const val</code>，智能定义在全局范围，智能修饰基本类型，必须立即用字面量初始化，等同于 Java 中的 <code>static final</code></li>
+<li>编译期常量和运行时常量</li>
+</ul>
+<span id="more"></span>
+
+<h2 id="分支表达式"><a href="#分支表达式" class="headerlink" title="分支表达式"></a>分支表达式</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// if else 表达式</span></span><br><span class="line">c = <span class="keyword">if</span> (a == <span class="number">3</span>) <span class="number">4</span> <span class="keyword">else</span> <span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// when 表达式</span></span><br><span class="line"><span class="keyword">var</span> x: Any = ...</span><br><span class="line">c = <span class="keyword">when</span> &#123;</span><br><span class="line">    x <span class="keyword">is</span> String -&gt; x.length</span><br><span class="line">    x == <span class="number">1</span> -&gt; <span class="number">100</span></span><br><span class="line">    <span class="keyword">else</span> -&gt; <span class="number">10</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// try catch 表达式</span></span><br><span class="line">c = <span class="keyword">try</span> &#123;</span><br><span class="line">    a / b</span><br><span class="line">&#125; <span class="keyword">catch</span> (e: Exception) &#123;</span><br><span class="line">    e.printStackTrae()</span><br><span class="line">    <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="运算符和中缀表达式"><a href="#运算符和中缀表达式" class="headerlink" title="运算符和中缀表达式"></a>运算符和中缀表达式</h2><ul>
+<li>Kotlin 支持运算符重载</li>
+</ul>
+<h3 id="与-equals"><a href="#与-equals" class="headerlink" title="== 与 equals"></a>== 与 equals</h3><ul>
+<li><code>&quot;Hello&quot; == &quot;World&quot;</code> 等价于 <code>&quot;Hello&quot;.equals(&quot;World&quot;)</code></li>
+</ul>
+<h3 id="中缀表达式"><a href="#中缀表达式" class="headerlink" title="中缀表达式"></a>中缀表达式</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2</span> to <span class="number">3</span></span><br><span class="line"><span class="comment">// 等价于</span></span><br><span class="line"><span class="number">2.</span>to(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// infix 关键字 + 只有一个参数</span></span><br><span class="line"><span class="keyword">infix</span> <span class="function"><span class="keyword">fun</span><span class="type">&lt;A, B&gt;</span> A.<span class="title">to</span><span class="params">(that: <span class="type">B</span>)</span></span>: Pair&lt;A, B&gt; = Pair(<span class="keyword">this</span>, that)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Lambda-表达式"><a href="#Lambda-表达式" class="headerlink" title="Lambda 表达式"></a>Lambda 表达式</h3><p>一个普通函数：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">    println(<span class="string">&quot;Hello&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一个匿名函数，可以将函数传递给一个变量：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这个函数的类型为 () -&gt; Unit</span></span><br><span class="line"><span class="keyword">val</span> func: () -&gt; <span class="built_in">Unit</span> = <span class="function"><span class="title">fun</span><span class="params">()</span></span> &#123;</span><br><span class="line">    println(<span class="string">&quot;Hello&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在调用的时候，可以像调用函数一样</span></span><br><span class="line">func()</span><br></pre></td></tr></table></figure>
+
+<p>Lambda 表达式：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> lambda: () -&gt; <span class="built_in">Unit</span> = &#123;</span><br><span class="line">    println(<span class="string">&quot;Hello&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">val</span> f1: (<span class="built_in">Int</span>) -&gt; <span class="built_in">Unit</span> = &#123; p: <span class="built_in">Int</span> -&gt;</span><br><span class="line">    println(p)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">val</span> f1: Function1&lt;<span class="built_in">Int</span>, <span class="built_in">Unit</span>&gt; = &#123; p -&gt;</span><br><span class="line">    println(p)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">val</span> f1 = &#123; p: <span class="built_in">Int</span> -&gt;</span><br><span class="line">    println(p)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 表达式最后一行作为返回值</span></span><br><span class="line"><span class="keyword">val</span> f1 = &#123; p: <span class="built_in">Int</span> -&gt;</span><br><span class="line">    println(p)</span><br><span class="line">    <span class="string">&quot;Hello&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当 Lambda 只有一个参数，可以用 it 指代</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> f1: Function1&lt;<span class="built_in">Int</span>, <span class="built_in">Unit</span>&gt; = &#123;</span><br><span class="line">    println(it)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.mlya.xyz/2021/02/16/Kotlin-%E8%A1%A8%E8%BE%BE%E5%BC%8F/" data-id="clh7pwfqy000obl691e422oil" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/02/16/IDEA-%E4%BB%A3%E7%A0%81%E6%8A%98%E5%8F%A0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          IDEA 代码折叠
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/02/16/Kotlin-%E5%86%85%E7%BD%AE%E7%B1%BB%E5%9E%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Kotlin 内置类型</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Compose/">Compose</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IDE-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/">IDE 使用技巧</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kotlin/">Kotlin</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/android/">android</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/android/gradle/">gradle</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Studio/" rel="tag">Android Studio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Compose/" rel="tag">Compose</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/" rel="tag">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gradle/" rel="tag">gradle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9F%B3%E8%A7%86%E9%A2%91/" rel="tag">音视频</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/Android-Studio/" style="font-size: 10px;">Android Studio</a> <a href="/tags/Compose/" style="font-size: 15px;">Compose</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Kotlin/" style="font-size: 20px;">Kotlin</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/gradle/" style="font-size: 10px;">gradle</a> <a href="/tags/%E9%9F%B3%E8%A7%86%E9%A2%91/" style="font-size: 10px;">音视频</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/05/02/gradle-7-x-%E5%A6%82%E4%BD%95%E5%BC%80%E5%8F%91%E4%B8%80%E4%B8%AA%E8%87%AA%E5%AE%9A%E4%B9%89-Plugin/">gradle 7.x 如何开发一个自定义 Plugin</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/23/%E5%AF%B9%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E7%9A%84%E7%90%86%E8%A7%A3/">对动态代理的理解</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/02/Compose-%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/">Compose 快速上手</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/30/Compose-%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/">Compose 底层原理介绍</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/24/Kotlin-%E6%B3%9B%E5%9E%8B/">Kotlin 泛型</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 Mlya<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

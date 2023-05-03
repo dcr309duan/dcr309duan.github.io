@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Kotlin 函数进阶 | 开发技术笔记</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Kotlin 函数进阶高阶函数高阶函数就是，参数为函数hove返回值为函数的函数，可以理解为函数的函数（类似于数学中函数的高阶的概念） 1234567inline fun IntArray.forEach(action: (Int) -&gt; Unit): Unit &amp;#123;    for (element in this) action(element)&amp;#125;inline fun &amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin 函数进阶">
+<meta property="og:url" content="https://blog.mlya.xyz/2021/02/19/Kotlin-%E5%87%BD%E6%95%B0%E8%BF%9B%E9%98%B6/index.html">
+<meta property="og:site_name" content="开发技术笔记">
+<meta property="og:description" content="Kotlin 函数进阶高阶函数高阶函数就是，参数为函数hove返回值为函数的函数，可以理解为函数的函数（类似于数学中函数的高阶的概念） 1234567inline fun IntArray.forEach(action: (Int) -&gt; Unit): Unit &amp;#123;    for (element in this) action(element)&amp;#125;inline fun &amp;">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://cdn.mlya.xyz/mweb/16134875559008.jpg">
+<meta property="og:image" content="http://cdn.mlya.xyz/mweb/16135281784507.jpg">
+<meta property="og:image" content="http://cdn.mlya.xyz/mweb/16135297228954.jpg">
+<meta property="og:image" content="http://cdn.mlya.xyz/mweb/16135297586110.jpg">
+<meta property="og:image" content="http://cdn.mlya.xyz/mweb/16135298367314.jpg">
+<meta property="og:image" content="http://cdn.mlya.xyz/mweb/16135299480994.jpg">
+<meta property="og:image" content="http://cdn.mlya.xyz/mweb/16135305130074.jpg">
+<meta property="og:image" content="http://cdn.mlya.xyz/mweb/16135305701194.jpg">
+<meta property="og:image" content="http://cdn.mlya.xyz/mweb/16135306109922.jpg">
+<meta property="article:published_time" content="2021-02-19T15:00:14.000Z">
+<meta property="article:modified_time" content="2023-05-03T12:47:44.095Z">
+<meta property="article:author" content="Mlya">
+<meta property="article:tag" content="Kotlin">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://cdn.mlya.xyz/mweb/16134875559008.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="开发技术笔记" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">开发技术笔记</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://blog.mlya.xyz"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Kotlin-函数进阶" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/19/Kotlin-%E5%87%BD%E6%95%B0%E8%BF%9B%E9%98%B6/" class="article-date">
+  <time datetime="2021-02-19T15:00:14.000Z" itemprop="datePublished">2021-02-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Kotlin/">Kotlin</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Kotlin 函数进阶
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Kotlin-函数进阶"><a href="#Kotlin-函数进阶" class="headerlink" title="Kotlin 函数进阶"></a>Kotlin 函数进阶</h1><h2 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h2><p>高阶函数就是，参数为函数hove返回值为函数的函数，可以理解为函数的函数（类似于数学中函数的高阶的概念）</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inline</span> <span class="function"><span class="keyword">fun</span> IntArray.<span class="title">forEach</span><span class="params">(action: (<span class="type">Int</span>) -&gt; <span class="type">Unit</span>)</span></span>: <span class="built_in">Unit</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (element <span class="keyword">in</span> <span class="keyword">this</span>) action(element)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">inline</span> <span class="function"><span class="keyword">fun</span> <span class="type">&lt;R&gt;</span> IntArray.<span class="title">map</span><span class="params">(transform: (<span class="type">Int</span>) -&gt; <span class="type">R</span>)</span></span>: List&lt;R&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> mapTo(ArrayList&lt;R&gt;(size), transform)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<blockquote>
+<p>函数引用：<code>::println</code></p>
+</blockquote>
+<ul>
+<li>Lambda 作为最后一个函数参数，可以将大括号放在外面</li>
+<li>只有一个 Lambda 表达式作为参数，可省略小括号</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">intArray.forEach &#123;</span><br><span class="line">    println(<span class="string">&quot;Hello <span class="variable">$it</span>&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="内联函数"><a href="#内联函数" class="headerlink" title="内联函数"></a>内联函数</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> ints = intArrayOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line">ints.forEach &#123;</span><br><span class="line">    println(<span class="string">&quot;Hello <span class="variable">$it</span>&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>forEach</code> 函数的定义是使用 <code>inline</code> 关键字的，定义为乐内联函数。</p>
+<p>内联函数是为了提升性能。</p>
+<p>local return</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ints.forEach &#123;</span><br><span class="line">    <span class="keyword">if</span> (it == <span class="number">3</span>) <span class="keyword">return</span><span class="symbol">@forEach</span></span><br><span class="line">    println(it)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>non-local return</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    ints.forEach &#123;</span><br><span class="line">        <span class="comment">// 这里就是 non-local return，将直接把 main 函数 return 掉</span></span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用 <code>crossinline</code> 禁止 non-local inline</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inline</span> <span class="function"><span class="keyword">fun</span> <span class="title">Runnable</span><span class="params">(<span class="keyword">crossinline</span> block: () -&gt; <span class="type">Unit</span>)</span></span>: Runnable &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">object</span>: Runnable &#123;</span><br><span class="line">        <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">run</span><span class="params">()</span></span> &#123;</span><br><span class="line">            block()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果使用 <code>noninline</code> 禁止函数参数被内联</p>
+<h3 id="内联属性"><a href="#内联属性" class="headerlink" title="内联属性"></a>内联属性</h3><ul>
+<li>没有 backing field 属性的 getter/setter 可以被内联</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> pocket: <span class="built_in">Double</span> = <span class="number">0.0</span></span><br><span class="line"><span class="keyword">var</span> money: <span class="built_in">Double</span></span><br><span class="line">    <span class="keyword">inline</span> <span class="keyword">get</span>() = pocket</span><br><span class="line">    <span class="keyword">inline</span> <span class="keyword">set</span>(value) &#123;</span><br><span class="line">        pocket = value</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="内联函数的限制"><a href="#内联函数的限制" class="headerlink" title="内联函数的限制"></a>内联函数的限制</h3><ul>
+<li>public/protected 的内联方法只能访问对应类的 public 成员</li>
+<li>内联函数的内联函数参数不能被存储</li>
+<li>内联函数的内联函数参数只能传递给其他内联函数参数</li>
+</ul>
+<h2 id="几个常用的高阶函数"><a href="#几个常用的高阶函数" class="headerlink" title="几个常用的高阶函数"></a>几个常用的高阶函数</h2><p><img src="http://cdn.mlya.xyz/mweb/16134875559008.jpg" alt="-w522"></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> person = Person(<span class="string">&quot;dcr&quot;</span>, <span class="number">20</span>)</span><br><span class="line">    person.let(::println)</span><br><span class="line">    person.run(::println)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> person2 = person.also &#123; it.name = <span class="string">&quot;hhh&quot;</span> &#125;</span><br><span class="line">    println(person2)</span><br><span class="line">    <span class="keyword">val</span> person3 = person.apply &#123; name = <span class="string">&quot;bbb&quot;</span> &#125;</span><br><span class="line">    println(person3)</span><br><span class="line"></span><br><span class="line">    File(<span class="string">&quot;build.gradle&quot;</span>).inputStream().reader().buffered().use &#123;</span><br><span class="line">        println(it.readLines())</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="集合变换与序列"><a href="#集合变换与序列" class="headerlink" title="集合变换与序列"></a>集合变换与序列</h2><h3 id="集合的遍历"><a href="#集合的遍历" class="headerlink" title="集合的遍历"></a>集合的遍历</h3><ul>
+<li>for in</li>
+<li>forEach</li>
+</ul>
+<h3 id="集合的映射操作举例"><a href="#集合的映射操作举例" class="headerlink" title="集合的映射操作举例"></a>集合的映射操作举例</h3><p><img src="http://cdn.mlya.xyz/mweb/16135281784507.jpg" alt="-w449"></p>
+<ul>
+<li>terminal operator</li>
+<li>asSequence</li>
+</ul>
+<h2 id="SAM-Single-Abstract-Method-转换"><a href="#SAM-Single-Abstract-Method-转换" class="headerlink" title="SAM(Single Abstract Method) 转换"></a>SAM(Single Abstract Method) 转换</h2><ul>
+<li>Java 中：单方法接口 -&gt; Lambda</li>
+</ul>
+<p><img src="http://cdn.mlya.xyz/mweb/16135297228954.jpg" alt="-w447"></p>
+<p><img src="http://cdn.mlya.xyz/mweb/16135297586110.jpg" alt="-w540"></p>
+<p><img src="http://cdn.mlya.xyz/mweb/16135298367314.jpg" alt="-w532"></p>
+<p><img src="http://cdn.mlya.xyz/mweb/16135299480994.jpg" alt="-w467"></p>
+<ul>
+<li>Java 的 Lambda 是假的，使用 SAM 转换</li>
+<li>Kotlin 的 Lambda 是真的，支持 SAM 转换</li>
+</ul>
+<p>注意这样的代码，会有问题，add 和 remove 的不是同一个 Listener，因为会自动生成一个匿名内部类</p>
+<p><img src="http://cdn.mlya.xyz/mweb/16135305130074.jpg" alt="-w526"></p>
+<p>要这样写：</p>
+<p><img src="http://cdn.mlya.xyz/mweb/16135305701194.jpg" alt="-w483"></p>
+<p>或者这样，以避免发生 SAM 转换</p>
+<p><img src="http://cdn.mlya.xyz/mweb/16135306109922.jpg" alt="-w444"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.mlya.xyz/2021/02/19/Kotlin-%E5%87%BD%E6%95%B0%E8%BF%9B%E9%98%B6/" data-id="clh7pwfqw000cbl699vkocdhc" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/02/22/Kotlin-%E7%B1%BB%E5%9E%8B%E8%BF%9B%E9%98%B6/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Kotlin 类型进阶
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/02/16/IDEA-%E4%BB%A3%E7%A0%81%E6%8A%98%E5%8F%A0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">IDEA 代码折叠</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Compose/">Compose</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IDE-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/">IDE 使用技巧</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kotlin/">Kotlin</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/android/">android</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/android/gradle/">gradle</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Studio/" rel="tag">Android Studio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Compose/" rel="tag">Compose</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/" rel="tag">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gradle/" rel="tag">gradle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9F%B3%E8%A7%86%E9%A2%91/" rel="tag">音视频</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/Android-Studio/" style="font-size: 10px;">Android Studio</a> <a href="/tags/Compose/" style="font-size: 15px;">Compose</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Kotlin/" style="font-size: 20px;">Kotlin</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/gradle/" style="font-size: 10px;">gradle</a> <a href="/tags/%E9%9F%B3%E8%A7%86%E9%A2%91/" style="font-size: 10px;">音视频</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/05/02/gradle-7-x-%E5%A6%82%E4%BD%95%E5%BC%80%E5%8F%91%E4%B8%80%E4%B8%AA%E8%87%AA%E5%AE%9A%E4%B9%89-Plugin/">gradle 7.x 如何开发一个自定义 Plugin</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/23/%E5%AF%B9%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E7%9A%84%E7%90%86%E8%A7%A3/">对动态代理的理解</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/02/Compose-%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/">Compose 快速上手</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/30/Compose-%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/">Compose 底层原理介绍</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/24/Kotlin-%E6%B3%9B%E5%9E%8B/">Kotlin 泛型</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 Mlya<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

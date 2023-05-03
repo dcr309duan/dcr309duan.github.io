@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Compose 底层原理介绍 | 开发技术笔记</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Compose 底层原理介绍Compose 是如何通过 setContent&amp;#123;Text(&quot;Hello&quot;)&amp;#125; 将组件显示到界面当中？ setContentsetContent 将 Compose 环境建立起来了，setContent 提供了各种上下文环境。  setContent 是定义于 ComponentActivity 的扩展函数。ComponentAc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Compose 底层原理介绍">
+<meta property="og:url" content="https://blog.mlya.xyz/2022/01/30/Compose-%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/index.html">
+<meta property="og:site_name" content="开发技术笔记">
+<meta property="og:description" content="Compose 底层原理介绍Compose 是如何通过 setContent&amp;#123;Text(&quot;Hello&quot;)&amp;#125; 将组件显示到界面当中？ setContentsetContent 将 Compose 环境建立起来了，setContent 提供了各种上下文环境。  setContent 是定义于 ComponentActivity 的扩展函数。ComponentAc">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-01-30T06:00:26.000Z">
+<meta property="article:modified_time" content="2023-05-03T12:47:44.094Z">
+<meta property="article:author" content="Mlya">
+<meta property="article:tag" content="Compose">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="开发技术笔记" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">开发技术笔记</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://blog.mlya.xyz"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Compose-底层原理介绍" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/01/30/Compose-%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/" class="article-date">
+  <time datetime="2022-01-30T06:00:26.000Z" itemprop="datePublished">2022-01-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Compose/">Compose</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Compose 底层原理介绍
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Compose-底层原理介绍"><a href="#Compose-底层原理介绍" class="headerlink" title="Compose 底层原理介绍"></a>Compose 底层原理介绍</h1><p>Compose 是如何通过 <code>setContent&#123;Text(&quot;Hello&quot;)&#125;</code> 将组件显示到界面当中？</p>
+<h2 id="setContent"><a href="#setContent" class="headerlink" title="setContent"></a>setContent</h2><p><code>setContent</code> 将 Compose 环境建立起来了，<code>setContent</code> 提供了各种上下文环境。</p>
+<blockquote>
+<p><code>setContent</code> 是定义于 <code>ComponentActivity</code> 的扩展函数。<br><code>ComponentActivity</code> 是老朋友了，他是 <code>AppCompatActivity</code> 的基类。</p>
+</blockquote>
+<p>因此 <code>setContent</code> 的第一个部分的工作，就是获取 <code>existingComposeView</code></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> existingComposeView = window.decorView</span><br><span class="line">    .findViewById&lt;ViewGroup&gt;(android.R.id.content)</span><br><span class="line">    .getChildAt(<span class="number">0</span>) <span class="keyword">as</span>? ComposeView</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<blockquote>
+<p>Activity 的 View 结构如下：</p>
+<ul>
+<li>decorView: 最底部是 decorView，通过 <code>window.decorView</code>（<code>getWindow().getDecorView()</code>） 获取。</li>
+<li>在其内部，包括一个 <code>LinearLayout</code>，包括两个部分。<ul>
+<li>App Bar (Action Bar)</li>
+<li>主布局，我们调用 <code>setContentView</code>，就是往主布局中填充内容。其具有固定的 id（<code>android.R.id.content</code>）</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>基于上述 Activity 的 View 结构，所以可以使用上述方法获取已经存在的 ComposeView。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (existingComposeView != <span class="literal">null</span>) with(existingComposeView) &#123;</span><br><span class="line">    setParentCompositionContext(parent)</span><br><span class="line">    setContent(content)</span><br><span class="line">&#125; <span class="keyword">else</span> ComposeView(<span class="keyword">this</span>).apply &#123;</span><br><span class="line">    <span class="comment">// Set content and parent **before** setContentView</span></span><br><span class="line">    <span class="comment">// to have ComposeView create the composition on attach</span></span><br><span class="line">    setParentCompositionContext(parent)</span><br><span class="line">    setContent(content)</span><br><span class="line">    <span class="comment">// Set the view tree owners before setting the content view so that the inflation process</span></span><br><span class="line">    <span class="comment">// and attach listeners will see them already present</span></span><br><span class="line">    setOwners()</span><br><span class="line">    setContentView(<span class="keyword">this</span>, DefaultActivityContentLayoutParams)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>针对 <code>existingComposeView</code> 为空和不为空的两种情况，执行不同的代码逻辑。</p>
+<p>如果不为空，则通过 <code>with&#123;&#125;</code> 函数进入其上下文，调用了如下函数：</p>
+<ul>
+<li><code>setParentCompositionContext(parent)</code></li>
+<li><code>setContent(content)</code></li>
+</ul>
+<p>如果为空，则创建一个 <code>ComposeView</code> 对象出来，通过 <code>apply&#123;&#125;</code> 函数进入其上下文。在其中，除了执行上述相同函数外，还执行了：</p>
+<ul>
+<li><code>setOwners()</code>: 这是 AppCompat 1.3 之前的 bug，所以需要手动设置，与这里的逻辑无关。</li>
+<li><code>setContentView(this, DefaultActivityContentLayoutParams)</code>: 将刚创建的 ComposeView 设置给 Activity。</li>
+</ul>
+<h3 id="ComposeView-setParentCompositionContext"><a href="#ComposeView-setParentCompositionContext" class="headerlink" title="ComposeView.setParentCompositionContext()"></a>ComposeView.setParentCompositionContext()</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">setParentCompositionContext</span><span class="params">(parent: <span class="type">CompositionContext</span>?)</span></span> &#123;</span><br><span class="line">    parentContext = parent</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>CompositionContext: 将两个 composition 做关联。</li>
+<li>这个参数默认为 <code>null</code>，那么我们暂时可以先不关注这个值到底是干什么的。</li>
+</ul>
+<h3 id="ComposeView-setContent"><a href="#ComposeView-setContent" class="headerlink" title="ComposeView.setContent()"></a>ComposeView.setContent()</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">setContent</span><span class="params">(content: @<span class="type">Composable</span> () -&gt; <span class="type">Unit</span>)</span></span> &#123;</span><br><span class="line">    shouldCreateCompositionOnAttachedToWindow = <span class="literal">true</span></span><br><span class="line">    <span class="keyword">this</span>.content.value = content</span><br><span class="line">    <span class="keyword">if</span> (isAttachedToWindow) &#123;</span><br><span class="line">        createComposition()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>shouldCreateCompositionOnAttachedToWindow</code>: 暂时先不关心</li>
+<li><code>this.content.value = content</code></li>
+<li><code>content</code> 是一个 <code>MutableState</code> 类型</li>
+<li><code>isAttachedToWindow</code>，是否将 View 挂接到 Window，当 View 完全显示的时候，这里就是 true。在 <code>onCreate</code> 的时候，这个还是 false</li>
+</ul>
+<h2 id="ComposeView-onAttachedToWindow"><a href="#ComposeView-onAttachedToWindow" class="headerlink" title="ComposeView.onAttachedToWindow"></a>ComposeView.onAttachedToWindow</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onAttachedToWindow</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">super</span>.onAttachedToWindow()</span><br><span class="line">    <span class="comment">// 初始状态为空</span></span><br><span class="line">    <span class="keyword">if</span> (composition != <span class="literal">null</span>) &#123;</span><br><span class="line">        checkViewTreeOwners()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (shouldCreateCompositionOnAttachedToWindow) &#123;</span><br><span class="line">        ensureCompositionCreated()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在之前 <code>shouldCreateCompositionOnAttachedToWindow</code> 被设置为了 true，那这里会执行这里的代码，执行 <code>ensureCompositionCreated()</code></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Suppress(<span class="meta-string">&quot;DEPRECATION&quot;</span>)</span> <span class="comment">// Still using ViewGroup.setContent for now</span></span><br><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">ensureCompositionCreated</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (composition == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (isAttachedToWindow) &#123;</span><br><span class="line">            checkViewTreeOwners()</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            creatingComposition = <span class="literal">true</span></span><br><span class="line">            composition = setContent(</span><br><span class="line">                parentContext ?: findViewTreeCompositionContext() ?: windowRecomposer</span><br><span class="line">            ) &#123;</span><br><span class="line">                Content()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            creatingComposition = <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>ensureCompositionCreated()</code> 方法属于 <code>AbstractComposeView</code> 代码可以分为两部分，第一部分 <code>checkViewTreeOwners()</code>，进行一些例行检查，与 lifecycle 相关，之后学习了之后可以补充理解一下。第二部分是一个 <code>try-finally</code> 结构，</p>
+<p>在 <code>try</code> 中，首先将 <code>creatingComposition</code> 置 true，执行完后，置 false，作为标志位使用。</p>
+<p>这里的核心代码，还是调用 <code>setContent()</code> 方法，注意，这里是调用的 <code>ViewGroup.setContent()</code> 方法，这个方法的签名与 <code>ComposeView</code> 的 <code>setContent()</code> 方法签名不同：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">internal</span> <span class="function"><span class="keyword">fun</span> ViewGroup.<span class="title">setContent</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">    parent: <span class="type">CompositionContext</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">    content: @<span class="type">Composable</span> () -&gt; <span class="type">Unit</span></span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>: Composition &#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ComposeView</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">setContent</span><span class="params">(content: @<span class="type">Composable</span> () -&gt; <span class="type">Unit</span>)</span></span> &#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>ViewGroup 包含两个参数，而 ComposeView 只包含一个参数。</li>
+<li>ViewGroup 返回 Composition，而 ComposeView 无返回值。</li>
+</ol>
+<p>这里，经过 <code>setContent</code> 之后，会将创建的 Composition 对象赋值给 composition 变量。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">composition = setContent(</span><br><span class="line">    parentContext ?: findViewTreeCompositionContext() ?: windowRecomposer</span><br><span class="line">) &#123;</span><br><span class="line">    Content()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>如果 parentContext 不为空，则将 parentContext 作为第一个参数</li>
+<li>否则，执行 findViewTreeCompositionContext，将返回结果作为参数</li>
+<li>否则，将 windowRecomposer 作为参数</li>
+<li>第二个参数，创建了一个 <code>Content</code> 对象</li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> View.<span class="title">findViewTreeCompositionContext</span><span class="params">()</span></span>: CompositionContext? &#123;</span><br><span class="line">    <span class="keyword">var</span> found: CompositionContext? = compositionContext</span><br><span class="line">    <span class="keyword">if</span> (found != <span class="literal">null</span>) <span class="keyword">return</span> found</span><br><span class="line">    <span class="keyword">var</span> parent: ViewParent? = parent</span><br><span class="line">    <span class="comment">// 逐级去取 parent View 的compositionContext</span></span><br><span class="line">    <span class="keyword">while</span> (found == <span class="literal">null</span> &amp;&amp; parent <span class="keyword">is</span> View) &#123;</span><br><span class="line">        found = parent.compositionContext</span><br><span class="line">        parent = parent.getParent()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 如果找不到，就会返回空</span></span><br><span class="line">    <span class="keyword">return</span> found</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>View.compositionContext</code> 是定义的一个扩展属性，使用了 View 的 set/getTag 功能。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> View.compositionContext: CompositionContext?</span><br><span class="line">    <span class="keyword">get</span>() = getTag(R.id.androidx_compose_ui_view_composition_context) <span class="keyword">as</span>? CompositionContext</span><br><span class="line">    <span class="keyword">set</span>(value) &#123;</span><br><span class="line">        setTag(R.id.androidx_compose_ui_view_composition_context, value)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的结果都为 null 后，将会获取 <code>View.windowRecomposer</code></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">internal</span> <span class="keyword">val</span> View.windowRecomposer: Recomposer</span><br><span class="line">    <span class="keyword">get</span>() &#123;</span><br><span class="line">        check(isAttachedToWindow) &#123;</span><br><span class="line">            <span class="string">&quot;Cannot locate windowRecomposer; View <span class="variable">$this</span> is not attached to a window&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 获取 View 的 rootView</span></span><br><span class="line">        <span class="keyword">val</span> rootView = rootView</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">when</span> (<span class="keyword">val</span> rootParentRef = rootView.compositionContext) &#123;</span><br><span class="line">            <span class="literal">null</span> -&gt; WindowRecomposerPolicy.createAndInstallWindowRecomposer(rootView)</span><br><span class="line">            <span class="keyword">is</span> Recomposer -&gt; rootParentRef</span><br><span class="line">            <span class="keyword">else</span> -&gt; error(<span class="string">&quot;root viewTreeParentCompositionContext is not a Recomposer&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>初始化情况，会调用如下方法进行初始化：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WindowRecomposerPolicy.createAndInstallWindowRecomposer(rootView)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">internal</span> <span class="function"><span class="keyword">fun</span> <span class="title">createAndInstallWindowRecomposer</span><span class="params">(rootView: <span class="type">View</span>)</span></span>: Recomposer &#123;</span><br><span class="line">    <span class="comment">// 生成新的 Recomposer</span></span><br><span class="line">    <span class="keyword">val</span> newRecomposer = factory.<span class="keyword">get</span>().createRecomposer(rootView)</span><br><span class="line">    <span class="comment">// 将其赋值给 rootView.compositionContext</span></span><br><span class="line">    rootView.compositionContext = newRecomposer</span><br><span class="line"></span><br><span class="line">    <span class="comment">// If the Recomposer shuts down, unregister it so that a future request for a window</span></span><br><span class="line">    <span class="comment">// recomposer will consult the factory for a new one.</span></span><br><span class="line">    <span class="keyword">val</span> unsetJob = GlobalScope.launch(</span><br><span class="line">        rootView.handler.asCoroutineDispatcher(<span class="string">&quot;windowRecomposer cleanup&quot;</span>).immediate</span><br><span class="line">    ) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            newRecomposer.join()</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="comment">// Unset if the view is detached. (See below for the attach state change listener.)</span></span><br><span class="line">            <span class="comment">// Since this is in a finally in this coroutine, even if this job is cancelled we</span></span><br><span class="line">            <span class="comment">// will resume on the window&#x27;s UI thread and perform this manipulation there.</span></span><br><span class="line">            <span class="keyword">val</span> viewTagRecomposer = rootView.compositionContext</span><br><span class="line">            <span class="keyword">if</span> (viewTagRecomposer === newRecomposer) &#123;</span><br><span class="line">                rootView.compositionContext = <span class="literal">null</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// If the root view is detached, cancel the await for recomposer shutdown above.</span></span><br><span class="line">    <span class="comment">// This will also unset the tag reference to this recomposer during its cleanup.</span></span><br><span class="line">    rootView.addOnAttachStateChangeListener(</span><br><span class="line">        <span class="keyword">object</span> : View.OnAttachStateChangeListener &#123;</span><br><span class="line">            <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onViewAttachedToWindow</span><span class="params">(v: <span class="type">View</span>)</span></span> &#123;&#125;</span><br><span class="line">            <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onViewDetachedFromWindow</span><span class="params">(v: <span class="type">View</span>)</span></span> &#123;</span><br><span class="line">                unsetJob.cancel()</span><br><span class="line">                v.removeOnAttachStateChangeListener(<span class="keyword">this</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    )</span><br><span class="line">    <span class="comment">// 将 newRecomposer 返回</span></span><br><span class="line">    <span class="keyword">return</span> newRecomposer</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>factory 是一个 AtomicReference 包装的引用，其包含的对象类型为 <code>WindowRecomposerFactory</code>，并赋值为其伴生对象 <code>LifecycleAware</code>。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> LifecycleAware: WindowRecomposerFactory = WindowRecomposerFactory &#123; rootView -&gt;</span><br><span class="line">    rootView.createLifecycleAwareViewTreeRecomposer()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>WindowRecomposerFactory</code> 是一个接口，这个接口有一个方法 <code>fun createRecomposer(windowRootView: View): Recomposer</code>，上面的 lambda 就是实现了这个方法。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> View.<span class="title">createLifecycleAwareViewTreeRecomposer</span><span class="params">()</span></span>: Recomposer &#123;</span><br><span class="line">    <span class="keyword">val</span> currentThreadContext = AndroidUiDispatcher.CurrentThread</span><br><span class="line">    <span class="keyword">val</span> pausableClock = currentThreadContext[MonotonicFrameClock]?.let &#123;</span><br><span class="line">        PausableMonotonicFrameClock(it).apply &#123; pause() &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">val</span> contextWithClock = currentThreadContext + (pausableClock ?: EmptyCoroutineContext)</span><br><span class="line">    <span class="comment">// 关键点1: 调用构造函数创建对象</span></span><br><span class="line">    <span class="keyword">val</span> recomposer = Recomposer(contextWithClock)</span><br><span class="line">    <span class="keyword">val</span> runRecomposeScope = CoroutineScope(contextWithClock)</span><br><span class="line">    <span class="keyword">val</span> viewTreeLifecycleOwner = checkNotNull(ViewTreeLifecycleOwner.<span class="keyword">get</span>(<span class="keyword">this</span>)) &#123;</span><br><span class="line">        <span class="string">&quot;ViewTreeLifecycleOwner not found from <span class="variable">$this</span>&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">    viewTreeLifecycleOwner.lifecycle.addObserver(</span><br><span class="line">        LifecycleEventObserver &#123; _, event -&gt;</span><br><span class="line">            <span class="meta">@Suppress(<span class="meta-string">&quot;NON_EXHAUSTIVE_WHEN&quot;</span>)</span></span><br><span class="line">            <span class="keyword">when</span> (event) &#123;</span><br><span class="line">                Lifecycle.Event.ON_CREATE -&gt;</span><br><span class="line">                    <span class="comment">// Undispatched launch since we&#x27;ve configured this scope</span></span><br><span class="line">                    <span class="comment">// to be on the UI thread</span></span><br><span class="line">                    runRecomposeScope.launch(start = CoroutineStart.UNDISPATCHED) &#123;</span><br><span class="line">                        <span class="comment">// 关键点2: 调用这个函数</span></span><br><span class="line">                        recomposer.runRecomposeAndApplyChanges()</span><br><span class="line">                    &#125;</span><br><span class="line">                Lifecycle.Event.ON_START -&gt; pausableClock?.resume()</span><br><span class="line">                Lifecycle.Event.ON_STOP -&gt; pausableClock?.pause()</span><br><span class="line">                Lifecycle.Event.ON_DESTROY -&gt; &#123;</span><br><span class="line">                    recomposer.cancel()</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">return</span> recomposer</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>SnapShot:<br>SnapShot 是 Compose 用来记录界面变化。完整的状态记录在 SlotTable 中</p>
+</blockquote>
+<blockquote>
+<p>AndroidComposeView 负责显示、触摸等</p>
+</blockquote>
+<p>Composition 经常使用 Kotlin 的如下特性去存取数据，非常简介有效，在 Android 开发中可以使用。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> wrapped = owner.view.getTag(R.id.wrapped_composition_tag)</span><br><span class="line">    <span class="keyword">as</span>? WrappedComposition</span><br><span class="line">    ?: WrappedComposition(owner, original).also &#123;</span><br><span class="line">        owner.view.setTag(R.id.wrapped_composition_tag, it)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Composition-对象"><a href="#Composition-对象" class="headerlink" title="Composition 对象"></a>Composition 对象</h2><p>CompositionImpl 的 setContent 方法</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">setContent</span><span class="params">(content: @<span class="type">Composable</span> () -&gt; <span class="type">Unit</span>)</span></span> &#123;</span><br><span class="line">    check(!disposed) &#123; <span class="string">&quot;The composition is disposed&quot;</span> &#125;</span><br><span class="line">    <span class="keyword">this</span>.composable = content</span><br><span class="line">    parent.composeInitial(<span class="keyword">this</span>, composable)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>将 Composable 对象显示执行的代码：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">internal</span> <span class="function"><span class="keyword">fun</span> <span class="title">invokeComposable</span><span class="params">(composer: <span class="type">Composer</span>, composable: @<span class="type">Composable</span> () -&gt; <span class="type">Unit</span>)</span></span> &#123;</span><br><span class="line">    <span class="meta">@Suppress(<span class="meta-string">&quot;UNCHECKED_CAST&quot;</span>)</span></span><br><span class="line">    <span class="keyword">val</span> realFn = composable <span class="keyword">as</span> Function2&lt;Composer, <span class="built_in">Int</span>, <span class="built_in">Unit</span>&gt;</span><br><span class="line">    realFn(composer, <span class="number">1</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这里，编译器会给 Composable 对象增加两个参数，再调用执行。</p>
+</blockquote>
+<p>不论是 Text，还是 Image 等，最终都会调用到 Layout 函数如下：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Composable</span> <span class="keyword">inline</span> <span class="function"><span class="keyword">fun</span> <span class="title">Layout</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">    content: @<span class="type">Composable</span> () -&gt; <span class="type">Unit</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">    modifier: <span class="type">Modifier</span> = Modifier,</span></span></span><br><span class="line"><span class="params"><span class="function">    measurePolicy: <span class="type">MeasurePolicy</span></span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> density = LocalDensity.current</span><br><span class="line">    <span class="keyword">val</span> layoutDirection = LocalLayoutDirection.current</span><br><span class="line">    ComposeNode&lt;ComposeUiNode, Applier&lt;Any&gt;&gt;(</span><br><span class="line">        factory = ComposeUiNode.Constructor,</span><br><span class="line">        update = &#123;</span><br><span class="line">            <span class="keyword">set</span>(measurePolicy, ComposeUiNode.SetMeasurePolicy)</span><br><span class="line">            <span class="keyword">set</span>(density, ComposeUiNode.SetDensity)</span><br><span class="line">            <span class="keyword">set</span>(layoutDirection, ComposeUiNode.SetLayoutDirection)</span><br><span class="line">        &#125;,</span><br><span class="line">        skippableUpdate = materializerOf(modifier),</span><br><span class="line">        content = content</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Compose-的-View-结构"><a href="#Compose-的-View-结构" class="headerlink" title="Compose 的 View 结构"></a>Compose 的 View 结构</h3><ul>
+<li>decorView(FrameLayout)<ul>
+<li>LinearLayout<ul>
+<li>android.R.id.content<ul>
+<li>ComposeView<ul>
+<li>AndroidComposeView<ul>
+<li>LayoutNode</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.mlya.xyz/2022/01/30/Compose-%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/" data-id="clh7pwfqu0003bl691bbacr69" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Compose/" rel="tag">Compose</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/02/02/Compose-%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Compose 快速上手
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/02/24/Kotlin-%E6%B3%9B%E5%9E%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Kotlin 泛型</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Compose/">Compose</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IDE-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/">IDE 使用技巧</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kotlin/">Kotlin</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/android/">android</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/android/gradle/">gradle</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Studio/" rel="tag">Android Studio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Compose/" rel="tag">Compose</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/" rel="tag">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gradle/" rel="tag">gradle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9F%B3%E8%A7%86%E9%A2%91/" rel="tag">音视频</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/Android-Studio/" style="font-size: 10px;">Android Studio</a> <a href="/tags/Compose/" style="font-size: 15px;">Compose</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Kotlin/" style="font-size: 20px;">Kotlin</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/gradle/" style="font-size: 10px;">gradle</a> <a href="/tags/%E9%9F%B3%E8%A7%86%E9%A2%91/" style="font-size: 10px;">音视频</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/05/02/gradle-7-x-%E5%A6%82%E4%BD%95%E5%BC%80%E5%8F%91%E4%B8%80%E4%B8%AA%E8%87%AA%E5%AE%9A%E4%B9%89-Plugin/">gradle 7.x 如何开发一个自定义 Plugin</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/23/%E5%AF%B9%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E7%9A%84%E7%90%86%E8%A7%A3/">对动态代理的理解</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/02/Compose-%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/">Compose 快速上手</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/30/Compose-%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/">Compose 底层原理介绍</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/24/Kotlin-%E6%B3%9B%E5%9E%8B/">Kotlin 泛型</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 Mlya<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

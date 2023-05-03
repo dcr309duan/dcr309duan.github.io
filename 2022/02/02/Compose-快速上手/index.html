@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Compose 快速上手 | 开发技术笔记</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="用 Compose 写出一个简单界面Compose 一些基本概念问题 Compose 独立于平台 不依赖于 android 更新，可以独立发布: ConstraintLayout, AppCompat, ViewModel, RecyclerView 等 Compose 更激进，独立于 Android，与 Android 无关，可以跨平台 独立于平台的一个最明显的用处就是在 Android Stu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Compose 快速上手">
+<meta property="og:url" content="https://blog.mlya.xyz/2022/02/02/Compose-%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/index.html">
+<meta property="og:site_name" content="开发技术笔记">
+<meta property="og:description" content="用 Compose 写出一个简单界面Compose 一些基本概念问题 Compose 独立于平台 不依赖于 android 更新，可以独立发布: ConstraintLayout, AppCompat, ViewModel, RecyclerView 等 Compose 更激进，独立于 Android，与 Android 无关，可以跨平台 独立于平台的一个最明显的用处就是在 Android Stu">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://cdn.mlya.xyz/mweb/layering-major-layers.svg">
+<meta property="article:published_time" content="2022-02-02T08:04:32.000Z">
+<meta property="article:modified_time" content="2023-05-03T12:47:44.094Z">
+<meta property="article:author" content="Mlya">
+<meta property="article:tag" content="Compose">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://cdn.mlya.xyz/mweb/layering-major-layers.svg">
+  
+    <link rel="alternate" href="/atom.xml" title="开发技术笔记" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">开发技术笔记</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://blog.mlya.xyz"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Compose-快速上手" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/02/02/Compose-%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/" class="article-date">
+  <time datetime="2022-02-02T08:04:32.000Z" itemprop="datePublished">2022-02-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Compose/">Compose</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Compose 快速上手
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="用-Compose-写出一个简单界面"><a href="#用-Compose-写出一个简单界面" class="headerlink" title="用 Compose 写出一个简单界面"></a>用 Compose 写出一个简单界面</h1><h2 id="Compose-一些基本概念问题"><a href="#Compose-一些基本概念问题" class="headerlink" title="Compose 一些基本概念问题"></a>Compose 一些基本概念问题</h2><ol>
+<li>Compose 独立于平台<ol>
+<li>不依赖于 android 更新，可以独立发布: ConstraintLayout, AppCompat, ViewModel, RecyclerView 等</li>
+<li>Compose 更激进，独立于 Android，与 Android 无关，可以跨平台</li>
+<li>独立于平台的一个最明显的用处就是在 Android Studio 中可以进行更强大的预览功能</li>
+<li>目前 Compose 支持 PC 已经进入 beta 版、也正在推进 Web 端</li>
+</ol>
+</li>
+<li>声明式 UI<ol>
+<li>只需要对界面进行一次性的声明，而不需要在不同条件下对界面进行操作。</li>
+</ol>
+</li>
+</ol>
+<span id="more"></span>
+
+<h2 id="简单控件"><a href="#简单控件" class="headerlink" title="简单控件"></a>简单控件</h2><p>Compose 中，界面需要在 <code>setContent&#123;&#125;</code> 中进行写。</p>
+<h3 id="Text"><a href="#Text" class="headerlink" title="Text"></a>Text</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Text(<span class="string">&quot;Mlya&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Image(painterResource=xxx, contentDescription=xxx)</span><br><span class="line">Image(ImageBitmap)</span><br><span class="line">Image(ImageVector)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>位图 vs 矢量图</li>
+<li>ImageBitmap or ImageVector</li>
+<li>painterResource 指定资源文件（R.drawable.xxx），很像 Android 中的 Drawable 的概念</li>
+</ul>
+<h4 id="加载网络图片"><a href="#加载网络图片" class="headerlink" title="加载网络图片"></a>加载网络图片</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/coil-kt/coil">Coil: Coroutine Image Loader</a><ul>
+<li>使用了 Kotlin 协程</li>
+<li>不是面向 View 系统的</li>
+<li>Android 官方推荐</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation <span class="string">&#x27;io.coil-kt:coil:1.4.0&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>使用：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Image(</span><br><span class="line">    painter = rememberImagePainter(<span class="keyword">data</span> = <span class="string">&quot;https://cdn.mlya.xyz/mweb/16351749286790.jpg&quot;</span>),</span><br><span class="line">    contentDescription = <span class="string">&quot;Coil Image&quot;</span>,</span><br><span class="line">    modifier = Modifier.size(<span class="number">128.</span>dp)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h2 id="基础布局"><a href="#基础布局" class="headerlink" title="基础布局"></a>基础布局</h2><ul>
+<li>FrameLayout -&gt; Box</li>
+<li>LinearLayout -&gt; Row, Column</li>
+<li>RelativeLayout -&gt; Box &amp; Modifier</li>
+<li>ConstraintLayout -&gt; 官方将 ConstraintLayout 移植到了 Compose 中</li>
+<li>RecyclerView -&gt; LazyColumn or LazyRow</li>
+<li>ScrollView -&gt; Modifier.verticalScroll() or Modifier.horizontalScroll()</li>
+<li>ViewPager -&gt; Pager</li>
+</ul>
+<h3 id="Box"><a href="#Box" class="headerlink" title="Box"></a>Box</h3><p>对应 FrameLayout</p>
+<h3 id="LinearLayout"><a href="#LinearLayout" class="headerlink" title="LinearLayout"></a>LinearLayout</h3><ul>
+<li>Column</li>
+<li>Row</li>
+</ul>
+<h4 id="Modifier"><a href="#Modifier" class="headerlink" title="Modifier"></a>Modifier</h4><ul>
+<li>padding</li>
+<li>margin</li>
+<li>clip</li>
+<li>background</li>
+</ul>
+<h3 id="Modifier-or-函数参数"><a href="#Modifier-or-函数参数" class="headerlink" title="Modifier or 函数参数"></a>Modifier or 函数参数</h3><p>为什么有些使用函数参数（字体、文字颜色），而有些使用 Modifier。</p>
+<p><strong>通用的设置用 Modifier，专项的参数用函数参数。</strong></p>
+<h3 id="点击事件"><a href="#点击事件" class="headerlink" title="点击事件"></a>点击事件</h3><p>Modifier or 独立参数都可以。</p>
+<ul>
+<li><code>Modifier.clickable &#123;&#125;</code></li>
+<li>有 padding 的时候，需要注意 clickable 的位置，在 Compose 中，Modifier 的调用顺序是有影响的。</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Button(onClick = &#123;&#125;) &#123;</span><br><span class="line">    Text(<span class="string">&quot;Hello World!&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="边距-padding-amp-margin-amp-background"><a href="#边距-padding-amp-margin-amp-background" class="headerlink" title="边距 padding &amp; margin &amp; background"></a>边距 padding &amp; margin &amp; background</h3><p>在 Compose 中，Margin 和 Padding 都用 Modifier.padding() 来设置。在 padding 和 margin 的区别最主要的就是在于背景色的设置。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Modifier.padding()</span><br></pre></td></tr></table></figure>
+
+<p>在 Compose 中，背景色使用 Modifier.background() 进行设置。在 Compose 中实现 Margin:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 背景色不包括 padding 的部分，效果类似 margin</span></span><br><span class="line">Text(text = <span class="string">&quot;Compose 学习&quot;</span>, modifier = Modifier</span><br><span class="line">    .padding(<span class="number">8.</span>dp)</span><br><span class="line">    .background(Color.Green))</span><br><span class="line"></span><br><span class="line"><span class="comment">// 背景色包括 padding 的部分，效果类似 padding</span></span><br><span class="line">Text(text = <span class="string">&quot;Compose 学习&quot;</span>, modifier = Modifier</span><br><span class="line">    .background(Color.Green)</span><br><span class="line">    .padding(<span class="number">8.</span>dp))</span><br><span class="line"></span><br><span class="line"><span class="comment">// 同时设置了 padding 和 margin 的效果</span></span><br><span class="line">Text(</span><br><span class="line">    text = <span class="string">&quot;Compose 学习&quot;</span>, modifier = Modifier</span><br><span class="line">        .padding(<span class="number">8.</span>dp)</span><br><span class="line">        .background(Color.Green)</span><br><span class="line">        .padding(<span class="number">8.</span>dp)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>background 还可以传入 shape 参数，来设置不同的背景形状。Shape 对象也是一个通用的能力，例如，可以用于 clip 当中，进行裁切。</p>
+<h3 id="尺寸设置"><a href="#尺寸设置" class="headerlink" title="尺寸设置"></a>尺寸设置</h3><ul>
+<li>layout_width &amp; layout_height -&gt; Modifier.size() or (Modifier.width() &amp; Modifier.height())</li>
+<li>默认是 wrap_content</li>
+<li>match_parent -&gt; Modifier.fillMaxWidth() or Modifier.fillMaxHeight()</li>
+</ul>
+<h3 id="文字大小"><a href="#文字大小" class="headerlink" title="文字大小"></a>文字大小</h3><p>文字大小使用函数参数(<em>fontSize</em>)设置，而不是 Modifier</p>
+<h2 id="点击事件-1"><a href="#点击事件-1" class="headerlink" title="点击事件"></a>点击事件</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Modifier.clickable &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>⚠️注意<br>clickable 的位置是有影响的（padding 前还是 padding 后），会影响点击的响应范围</p>
+</blockquote>
+<h2 id="groups"><a href="#groups" class="headerlink" title="groups"></a>groups</h2><p><a target="_blank" rel="noopener" href="https://developer.android.google.cn/jetpack/compose/layering?hl=en">Compose 模块分层</a></p>
+<p><img src="http://cdn.mlya.xyz/mweb/layering-major-layers.svg" alt="layering-major-layers"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.mlya.xyz/2022/02/02/Compose-%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/" data-id="clh7pwfqv0007bl6951hphrgf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Compose/" rel="tag">Compose</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/04/23/%E5%AF%B9%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E7%9A%84%E7%90%86%E8%A7%A3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          对动态代理的理解
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/01/30/Compose-%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Compose 底层原理介绍</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Compose/">Compose</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IDE-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/">IDE 使用技巧</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kotlin/">Kotlin</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/android/">android</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/android/gradle/">gradle</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android-Studio/" rel="tag">Android Studio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Compose/" rel="tag">Compose</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/" rel="tag">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gradle/" rel="tag">gradle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9F%B3%E8%A7%86%E9%A2%91/" rel="tag">音视频</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/Android-Studio/" style="font-size: 10px;">Android Studio</a> <a href="/tags/Compose/" style="font-size: 15px;">Compose</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Kotlin/" style="font-size: 20px;">Kotlin</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/gradle/" style="font-size: 10px;">gradle</a> <a href="/tags/%E9%9F%B3%E8%A7%86%E9%A2%91/" style="font-size: 10px;">音视频</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/05/02/gradle-7-x-%E5%A6%82%E4%BD%95%E5%BC%80%E5%8F%91%E4%B8%80%E4%B8%AA%E8%87%AA%E5%AE%9A%E4%B9%89-Plugin/">gradle 7.x 如何开发一个自定义 Plugin</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/23/%E5%AF%B9%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E7%9A%84%E7%90%86%E8%A7%A3/">对动态代理的理解</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/02/Compose-%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/">Compose 快速上手</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/30/Compose-%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/">Compose 底层原理介绍</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/24/Kotlin-%E6%B3%9B%E5%9E%8B/">Kotlin 泛型</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 Mlya<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
