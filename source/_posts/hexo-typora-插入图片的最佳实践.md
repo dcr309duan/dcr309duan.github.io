@@ -2,7 +2,9 @@
 title: hexo typora 插入图片的最佳实践
 typora-root-url: ./hexo-typora-插入图片的最佳实践
 date: 2024-05-05 23:13:07
-tags:
+tags: 
+  - blog
+  - hexo
 
 ---
 
