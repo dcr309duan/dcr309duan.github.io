@@ -40,7 +40,10 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
+marked:
+  prependRoot: true
+  postAsset: true
 relative_link: false
 future: true
 syntax_highlighter: highlight.js
@@ -104,6 +107,7 @@ deploy:
   type: ''
 
 
+# theme config start
 since_year: 2024
 
 post_copy:
@@ -124,15 +128,6 @@ menu:
   Tags:
     widget: Tags
 
-# 右上角
-header_menu:
-  关于: /about
-
-# 备案
-# beian:
-#   enable: true
-#   icp: 京ICP备xxxxxxxx号
-
 # visit count
 visit_count:
   type: busuanzi
@@ -143,4 +138,4 @@ search:
   path: meta.json # changeable
   field: post
   content: false # currently unsupported
-
+# theme config end
