@@ -1,0 +1,3 @@
+[submodule "themes/hexo-theme-yuzu"]
+	path = themes/hexo-theme-yuzu
+	url = git@github.com:Cerallin/hexo-theme-yuzu.git
