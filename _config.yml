@@ -119,12 +119,9 @@ post_copy:
 menu:
   Archives:
     widget: Archives # 三种：Archives | Posts | Tags
-  Posts1:
+  Posts:
     name: Posts
     widget: Posts
-  # Posts2:
-  #   name: Posts2
-  #   widget: Posts
   Tags:
     widget: Tags
 
