@@ -1,0 +1,9 @@
+title: Mlya's Blog
+description: >-
+  A personal blog sharing knowledge and thoughts.
+baseurl: ""
+url: "https://dcr309duan.github.io"
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
